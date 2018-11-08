@@ -1,0 +1,11 @@
+/*Makes the image scale both up and down on responsiveness*/
+.responsive {
+    width: 100%;
+    height: auto;
+}
+
+.responsive_mw {
+    width: 100%;
+    max-width: 200px;
+    height: auto;
+}
