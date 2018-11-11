@@ -27,7 +27,7 @@
         <a href="shops.html">Shops</a>
         <a href="offers.html">Offers</a>
         <a href="events.html">Events</a>
-        <a href="user.html" class="active">User</a>
+        <a href="userLogin.html" class="active">User</a>
         <a href="javascript:void(0);" class="icon" onclick="navbar()">
             <i class="fa fa-bars"></i>
         </a>
@@ -37,9 +37,11 @@
         <h1>Login</h1>
         <p>Login if you are a member of Aalborg Storcenter. If you are not a member yet, feel free to sign up.</p>
 
-        <input placeholder="Email" type="email"/>
-        <input placeholder="Password" type="password"/>
-        <button>Sign up</button><button>OK</button>
+        <form action="membership.html" method="POST">
+            <input placeholder="Email" type="email" />
+            <input placeholder="Password" type="password" />
+            <button type="submit">OK</button>
+        </form>
     </div>
 
 </body>
