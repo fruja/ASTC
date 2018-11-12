@@ -47,7 +47,7 @@ body {
   @media screen and (max-width: 600px) {
     .topnav a {display: none;}
     .topnav a.icon {
-      float: right;
+      float: left;
       display: block;
     }
   }
@@ -57,12 +57,12 @@ body {
     .topnav.responsive {position: relative;}
     .topnav.responsive .icon {
       position: absolute;
-      right: 0;
+      left: 0;
       top: 0;
     }
     .topnav.responsive a {
       float: none;
       display: block;
-      text-align: left;
+      text-align: center;
     }
   }
