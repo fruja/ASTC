@@ -1,6 +1,26 @@
-.inputStyle {
-    border-radius: 5px;
-    border-color: darkgrey;
-    width: 250px;
-    height: 20px;
+input {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: none;
+    border-bottom: 1px solid white;
+    background-color: transparent;
+    color: white;
+}
+
+::placeholder {
+    color: white;
+    opacity: 1; /* Firefox */
+}
+
+button {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    background-color: white;
+    color: blueviolet;
+    border-radius: 25px;
+    text-align: center;
 }

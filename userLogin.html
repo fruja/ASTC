@@ -20,7 +20,7 @@
         crossorigin="anonymous">
 
     <link rel="stylesheet" href="css/navbar.css">
-
+    <link rel="stylesheet" href="css/standardContent.css">
     <link rel="stylesheet" href="css/membership.css">
 
     <script src="JS/navbar.js"></script>
@@ -28,7 +28,7 @@
 
 <body>
     <div class="topnav" id="myTopnav">
-        <a href="index.html"><img src="img/astc_logo.png" alt="ASTS_logo" style="height:15px;border:0"></a>
+        <a href="index.html"><img src="https://astc.dk/wp-content/uploads/2018/05/logo_white.svg" alt="ASTS_logo" style="height:17px;border:0;"></a>
         <a href="index.html">Home</a>
         <a href="map.html">Map</a>
         <a href="shops.html">Shops</a>
@@ -43,14 +43,20 @@
     </div>
 
     <div style="padding:16px">
-        <h1>Login</h1>
-        <p>Login if you are a member of Aalborg Storcenter. If you are not a member yet, feel free to sign up.</p>
+        <h3 style="text-align: center;">Welcome back!</h3> 
+        <h2>Log in</h2>
 
         <form action="membership.html" method="POST">
-            <input class="inputStyle" placeholder="Email" type="email" />
-            <input placeholder="Password" type="password" />
+            <input placeholder="Email" type="email" />
+            <input class="inputIcon" placeholder="Password" type="password" />
             <button type="submit">Log in</button>
         </form>
+
+        <br/>
+        <div style="text-align: center;">
+            ___________________ <br/> <br/>
+            Not a member? <br/> <br/>
+        </div>
         <form action="signUp.html" method="POST">
             <button>Sign up</button>
         </form>
