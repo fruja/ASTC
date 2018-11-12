@@ -1,12 +1,19 @@
 body {
     margin: 0;
     font-family: Arial, Helvetica, sans-serif;
+    color: white;
+    height: -webkit-fill-available;
+    box-sizing: border-box;
+    /* sets the background */
+    background-color: blue; /* For browsers that do not support gradients */
+    background-image: linear-gradient(to bottom right, #0080FF, purple); /* Standard syntax (must be last) */
   }
   
 /* Add a background color to the top navigation */
 .topnav {
-    background-color: rgb(45, 28, 92);
+    background-color: transparent;
     overflow: hidden;
+    border-bottom: solid thin white;
 }
 
 /* Style the links inside the navigation bar */
@@ -22,13 +29,12 @@ body {
 
 /* Change the color of links on hover */
 .topnav a:hover {
-    background-color: rgb(55, 33, 116);
     color: black;
 }
 
 /* Add an active class to highlight the current page */
 .active {
-    background-color: rgb(55, 33, 116);
+    font-weight: bold;
     color: white;
 }
 
