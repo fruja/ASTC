@@ -13,7 +13,7 @@ body {
 .topnav {
     background-color: transparent;
     overflow: hidden;
-    border-bottom: solid thin white;
+    /*border-bottom: solid thin white;*/
 }
 
 /* Style the links inside the navigation bar */
@@ -68,15 +68,18 @@ body {
       position: absolute;
       left: 0;
       top: 0;
+      border: none;
     }
     .topnav.responsive .userIcon {
       position: absolute;
       right: 0;
       top: 0;
+      border: none;
     }
     .topnav.responsive a {
       float: none;
       display: block;
       text-align: center;
+      border-bottom: solid thin white;
     }
   }
