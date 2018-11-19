@@ -41,7 +41,7 @@ request.setRequestHeader('Content-type', 'application/json');
 request.setRequestHeader('Access-Control-Allow-Origin', '*');
 request.setRequestHeader('Access-Control-Allow-Methods', '*');
 request.setRequestHeader('Access-Control-Allow-Credentials', '*');
-console.log('ok');
+console.log('ok'); 
 
 request.onload = function () {
 
