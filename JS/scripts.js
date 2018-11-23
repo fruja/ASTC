@@ -34,7 +34,7 @@ container.setAttribute('class', 'container');
 app.appendChild(container);
 
 var request = new XMLHttpRequest();
-request.open('GET', 'http://localhost:51307/Api/Events', true);
+request.open('GET', 'http://localhost:55825/Api/Events', true);
 
 request.setRequestHeader('Access-Control-Allow-Headers', '*');
 request.setRequestHeader('Content-type', 'application/json');

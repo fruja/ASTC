@@ -5,6 +5,7 @@ body {
     height: -webkit-fill-available;
     box-sizing: border-box;
     /* sets the background */
+    background-attachment: fixed;
     background-color: #0080FF; /* For browsers that do not support gradients */
     background-image: linear-gradient(to bottom right, #0080FF, purple); /* Standard syntax (must be last) */
   }
