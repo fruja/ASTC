@@ -1,5 +1,6 @@
 var request = new XMLHttpRequest();
 
+//Get all events
 request.open('GET', 'http://localhost:55825/Api/Events', true);
 request.onload = function () {
 
