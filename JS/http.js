@@ -28,10 +28,12 @@ sendReq("http://localhost:55825/Api/Events", function processResponse(response) 
         //makes a new 'a' tag for every event (like this: <a class="card" href="#"> </a>)
         const card = document.createElement('a');
         card.setAttribute('class', 'card');
-        card.setAttribute('href', `event/${events.ID}`);
+        card.setAttribute('href', `./singleEvent.html`);
+        card.setAttribute('onclick', getOneEvent(events.ID));
+        //`event/${events.ID}`
 
         var image = document.createElement('img');
-        image.setAttribute('src', './img/shops/matas.jpg');
+        image.setAttribute('src', events.EventImg);
         image.setAttribute('class', 'eventImg');
 
         //makes a new 'h3' tag for the title of the event
