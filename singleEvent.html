@@ -25,7 +25,7 @@
     
     <!-- JS import -->
     <script src="JS/navbar.js"></script>
-    <!--<script src="JS/http.js"></script>-->
+    <script src="JS/reqEvents.js"></script>
 </head>
 
 <body>
@@ -47,51 +47,13 @@
     <div style="padding:16px">
         <h1>Single Event</h1>
 
-        <div id="el1"></div>
+        <div id="singleEvent"></div>
+        <div id="eventList" style="display:none;"></div>
     </div>
 
     <script>
 
-var pageURL = window.location.href;
-var CurrentID = pageURL.substr(pageURL.lastIndexOf('/') + 18);
-console.log(CurrentID);
 
-
-function sendReq(url, callbackFunction) {
-    var xmlhttp
-
-    if (window.ActiveXObject) {
-        xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-    }
-    else if (window.XMLHttpRequest) {
-        xmlhttp = new XMLHttpRequest();
-    }
-
-    xmlhttp.onreadystatechange = function () {
-        if (xmlhttp.readyState == 4 && xmlhttp.status == '200') {
-            if (callbackFunction) callbackFunction(xmlhttp.responseText);
-        }
-    }
-
-    xmlhttp.open("GET", url, true);
-    xmlhttp.send();
-}
-    sendReq(`http://localhost:55825/Api/Events/${CurrentID}`, function processResponse(response) {
-        //document.getElementById("el1").innerHTML = "";
-        var el1 = document.getElementById("el1");
-        el1.innerHTML = "";
-
-        var data = JSON.parse(response);
-
-        var eventTitle = document.createElement('h3');
-        eventTitle.textContent = data.EventTitle;
-
-        var eventDescription = document.createElement('p');
-        eventDescription.textContent = data.EventDesc;
-
-        el1.appendChild(eventTitle);
-        el1.appendChild(eventDescription);
-    });
 
 
 
