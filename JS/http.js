@@ -25,16 +25,24 @@ sendReq("http://localhost:55825/Api/Events", function processResponse(response) 
     var data = JSON.parse(response);
 
     data.forEach(events => {
+        
         //makes a new 'a' tag for every event (like this: <a class="card" href="#"> </a>)
-        const card = document.createElement('a');
+        card = document.createElement('div');
         card.setAttribute('class', 'card');
-        //card.setAttribute('href', `./singleEvent.html`);
-        card.setAttribute('href', post(`./singleEvent.html`, events.EventTitle, 'POST'));
+        card.setAttribute('id', events.ID);
+        //card.setAttribute('href', post(`./singleEvent.html`, events.EventTitle, 'POST'));
         //`event/${events.ID}`
+
+        link = document.createElement('a');
+        link.setAttribute('href', './singleEvent.html#' + events.ID)
+        link.setAttribute('class', 'link');
+
 
         var image = document.createElement('img');
         image.setAttribute('src', events.EventImg);
         image.setAttribute('class', 'eventImg');
+
+
 
         //makes a new 'h3' tag for the title of the event
         var eventTitle = document.createElement('h3');
@@ -46,8 +54,10 @@ sendReq("http://localhost:55825/Api/Events", function processResponse(response) 
         //adds the 'a' tag to the 'eventList' div
         eventList.appendChild(card);
         //adds the information about the event in to the 'a' tag
-        card.appendChild(image);
-        card.appendChild(eventTitle);
+        card.appendChild(link);
+        link.appendChild(image);
+
+        link.appendChild(eventTitle);
         card.appendChild(eventDescription);
     });
 });
@@ -59,7 +69,7 @@ sendReq("http://localhost:55825/Api/Events", function processResponse(response) 
 * @param {string} [method=post] the method to use on the form
 */
 
-function post(path, params, method) {
+/*function post(path, params, method) {
     method = method || "post"; // Set method to post by default if not specified.
 
     // The rest of this code assumes you are not using a library.
@@ -89,4 +99,4 @@ getOneEvent = (id) => {
         document.getElementById("el1").innerHTML = "";
         document.getElementById("el1").innerHTML = response;
     });
-}
+} */
