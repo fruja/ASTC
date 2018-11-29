@@ -32,6 +32,13 @@ sendReq("http://localhost:55825/Api/Offers", function processResponse(response) 
         card.setAttribute('id', offers.ID);
         card.setAttribute('href', './singleOffer.html#' + offers.ID)
 
+        var shop_img_container = document.createElement('div');
+        shop_img_container.setAttribute('class', 'shop_img_container');
+
+        var shop_image = document.createElement('img');
+        shop_image.setAttribute('src', offers.Shop.ShopImg);
+        shop_image.setAttribute('class', 'shop_image');
+
         //makes a new 'img' tag for the image of the offer
         var image = document.createElement('img');
         image.setAttribute('src', offers.OfferImg);
@@ -48,10 +55,14 @@ sendReq("http://localhost:55825/Api/Offers", function processResponse(response) 
         var shopName = document.createElement('p');
         shopName.textContent = "Shop: " + offers.Shop.ShopName;
 
+
+
         //adds the 'a' tag to the 'offerList' div
         offerList.appendChild(card);
 
         //adds the information about the offer in to the 'a' tag
+        card.appendChild(shop_img_container);
+        shop_img_container.appendChild(shop_image);
         card.appendChild(image);
         card.appendChild(offerTitle);
         card.appendChild(offerDescription);

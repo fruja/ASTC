@@ -11,3 +11,14 @@
 .image {
     width: 100%;
 }
+
+.shop_img_container {
+  z-index: 999;
+  margin: 0 auto;
+  width: 30%;
+}
+
+.shop_image {
+    width:100%;
+
+}
