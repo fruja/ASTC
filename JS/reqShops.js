@@ -35,6 +35,7 @@ sendReq("http://localhost:55825/Api/Shops", function processResponse(response) {
         //makes a new 'img' tag for the image of the shop
         var image = document.createElement('img');
         image.setAttribute('src', shops.ShopImg);
+        image.setAttribute('alt', shops.ShopName + ' logo');
         image.setAttribute('class', 'image')
 
         //adds the 'a' tag to the 'shopList' div

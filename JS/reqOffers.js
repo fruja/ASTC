@@ -18,6 +18,8 @@ function sendReq(url, callbackFunction) {
     xmlhttp.send();
 }
 
+
+
 //GET all offers
 sendReq("http://localhost:55825/Api/Offers", function processResponse(response) {
     var offerList = document.getElementById('offerList');
@@ -43,6 +45,7 @@ sendReq("http://localhost:55825/Api/Offers", function processResponse(response) 
         //makes a new 'img' tag for the image of the offer
         var image = document.createElement('img');
         image.setAttribute('src', offers.OfferImg);
+        image.setAttribute('alt', 'Image of: ' + offers.OfferTitle);
         image.setAttribute('class', 'image');
 
         //makes a new 'h3' tag for the title of the offer
@@ -53,8 +56,8 @@ sendReq("http://localhost:55825/Api/Offers", function processResponse(response) 
         var offerDescription = document.createElement('p');
         offerDescription.textContent = offers.OfferDesc;
 
-        var shopName = document.createElement('p');
-        shopName.textContent = "Shop: " + offers.Shop.ShopName;
+        var validUntil = document.createElement('p');
+        validUntil.textContent = "Valid until: " + offers.OfferEnd;
 
         //adds the 'a' tag to the 'offerList' div
         offerList.appendChild(card);
@@ -65,7 +68,7 @@ sendReq("http://localhost:55825/Api/Offers", function processResponse(response) 
         card.appendChild(image);
         card.appendChild(offerTitle);
         card.appendChild(offerDescription);
-        card.appendChild(shopName);
+        card.appendChild(validUntil);
     });
 });
 

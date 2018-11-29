@@ -35,6 +35,7 @@ sendReq("http://localhost:55825/Api/Events", function processResponse(response) 
         //makes a new 'img' tag for the image of the event
         var image = document.createElement('img');
         image.setAttribute('src', events.EventImg);
+        image.setAttribute('alt', 'Image of: ' + events.EventTitle);
         image.setAttribute('class', 'image');
 
         //makes a new 'h3' tag for the title of the event
