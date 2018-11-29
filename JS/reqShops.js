@@ -26,47 +26,47 @@ sendReq("http://localhost:55825/Api/Shops", function processResponse(response) {
     var data = JSON.parse(response);
 
     data.forEach(shops => {
-        //makes a new 'a' tag for every offer (like this: <a class="card" href="#"> </a>)
+        //makes a new 'a' tag for every shop (like this: <a class="card" href="#"> </a>)
         card = document.createElement('a');
         card.setAttribute('class', 'card');
         card.setAttribute('id', shops.ID);
-        card.setAttribute('href', './singleshop.html#' + shops.ID)
+        card.setAttribute('href', './singleShop.html#' + shops.ID)
 
-        //makes a new 'img' tag for the image of the offer
+        //makes a new 'img' tag for the image of the shop
         var image = document.createElement('img');
         image.setAttribute('src', shops.ShopImg);
-        image.setAttribute('class', 'image');
+        image.setAttribute('class', 'image')
 
         //adds the 'a' tag to the 'shopList' div
         shopList.appendChild(card);
 
-        //adds the information about the offer in to the 'a' tag
+        //adds the information about the shop in to the 'a' tag
         card.appendChild(image);
-        card.appendChild(shopName);
     });
 });
 
 //Finds the current ID of the URL
-/*var pageURL = window.location.href;
-var CurrentID = pageURL.substr(pageURL.lastIndexOf('/') + 18);
+var pageURL = window.location.href;
+var CurrentID = pageURL.substr(pageURL.lastIndexOf('/') + 17);
 
-//GET single offer by the current ID
-sendReq(`http://localhost:55825/Api/Offers/${CurrentID}`, function processResponse(response) {
-    var singleOffer = document.getElementById("singleOffer");
-    singleOffer.innerHTML = "";
+//GET single shop by the current ID
+sendReq(`http://localhost:55825/Api/Shops/${CurrentID}`, function processResponse(response) {
+    var singleShop = document.getElementById("singleShop");
+    singleShop.innerHTML = "";
 
     var data = JSON.parse(response);
 
-    var offerTitle = document.createElement('h3');
-    offerTitle.textContent = data.OfferTitle;
+    var shopTitle = document.createElement('h3');
+    shopTitle.textContent = data.ShopName;
 
-    var offerDescription = document.createElement('p');
-    offerDescription.textContent = data.OfferDesc;
+    var shopDescription = document.createElement('p');
+    shopDescription.textContent = data.ShopDesc;
 
-    var shopName = document.createElement('p');
-    shopName.textContent = "Shop: " + data.Shop.ShopName;
+    //Get offers for the specific shop
+    /*var offerName = document.createElement('p');
+    offerName.textContent = "Offers: " + data.Offer.ShopName;*/
 
-    singleOffer.appendChild(offerTitle);
-    singleOffer.appendChild(offerDescription);
-    singleOffer.appendChild(shopName);
-});*/
+    singleShop.appendChild(shopTitle);
+    singleShop.appendChild(shopDescription);
+    //singleShop.appendChild(offerName);
+});
