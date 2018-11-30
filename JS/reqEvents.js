@@ -64,8 +64,14 @@ var CurrentID = pageURL.substr(pageURL.lastIndexOf('/') + 18);
 sendReq(`http://localhost:55825/Api/Events/${CurrentID}`, function processResponse(response) {
     var singleEvent = document.getElementById("singleEvent");
     singleEvent.innerHTML = "";
+    var singleEventImg = document.getElementById("singleEventImg");
+    singleEventImg.innerHTML = "";
 
     var data = JSON.parse(response);
+
+    var image = document.createElement('img');
+    image.setAttribute('src', data.EventImg);
+    image.setAttribute('class', 'image');
 
     var eventTitle = document.createElement('h3');
     eventTitle.textContent = data.EventTitle;
@@ -73,6 +79,7 @@ sendReq(`http://localhost:55825/Api/Events/${CurrentID}`, function processRespon
     var eventDescription = document.createElement('p');
     eventDescription.textContent = data.EventDesc;
 
+    singleEventImg.appendChild(image);
     singleEvent.appendChild(eventTitle);
     singleEvent.appendChild(eventDescription);
 });

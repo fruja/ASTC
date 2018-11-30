@@ -54,8 +54,14 @@ var CurrentID = pageURL.substr(pageURL.lastIndexOf('/') + 17);
 sendReq(`http://localhost:55825/Api/Shops/${CurrentID}`, function processResponse(response) {
     var singleShop = document.getElementById("singleShop");
     singleShop.innerHTML = "";
+    var singleShopImg = document.getElementById("singleShopImg");
+    singleShopImg.innerHTML = "";
 
     var data = JSON.parse(response);
+
+    var image = document.createElement('img');
+    image.setAttribute('src', data.ShopImg);
+    image.setAttribute('class', 'image');
 
     var shopTitle = document.createElement('h3');
     shopTitle.textContent = data.ShopName;
@@ -67,6 +73,7 @@ sendReq(`http://localhost:55825/Api/Shops/${CurrentID}`, function processRespons
     /*var offerName = document.createElement('p');
     offerName.textContent = "Offers: " + data.Offer.ShopName;*/
 
+    singleShopImg.appendChild(image);
     singleShop.appendChild(shopTitle);
     singleShop.appendChild(shopDescription);
     //singleShop.appendChild(offerName);

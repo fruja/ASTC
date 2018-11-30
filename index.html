@@ -47,13 +47,20 @@
             </a>
         </div>
 
+
         <div class="slideshow-container">
             <div class="imgSlider">
-                <img src="./img/shops/bilka.jpg" style="width:100%">
+                <img class="desktopImg" src="./img/slider/Slider1.png" style="width:100vw">
+                <img class="mobileImg" src="./img/slider/Slider1mobile.png" style="width:100%">
             </div>
-
             <div class="imgSlider">
-                <img src="./img/events/gurli.jpg" style="width:100%">
+                <img class="desktopImg" src="./img/slider/Slider2.png" style="width:100vw">
+                <img class="mobileImg" src="./img/slider/Slider2mobile.png" style="width:100%">
+
+            </div>
+            <div class="imgSlider">
+                <img class="desktopImg" src="./img/slider/Slider3.png" style="width:100vw">
+                <img class="mobileImg" src="./img/slider/Slider3mobile.png" style="width:100%">
             </div>
 
             <a class="prev" onclick="plusSlides(-1, 0)">&#10094;</a>
@@ -63,6 +70,7 @@
 
         <label id="timeDiv" for="modal-state"></label>
         <input type="checkbox" name="modal-state" id="modal-state">
+
         <div class="modal-overlay">
             <label for="modal-state" class="modal-overlay-close"></label>
             <div class="modal">
@@ -70,48 +78,46 @@
                 <h2>We're Open At These Times</h2>
                 <div id="Monday" class="dateTime">
                     <div class="day">Monday</div>
-                    <div class="time">10:00 - 20:00</div>
+                    <div class="time">10:00 - 19:00</div>
                 </div>
                 <br>
                 <div id="Tuesday" class="dateTime">
                     <div class="day">Tuesday</div>
-                    <div class="time">10:00 - 20:00</div>
+                    <div class="time">10:00 - 19:00</div>
                 </div>
                 <br>
                 <div id="Wednesday" class="dateTime">
                     <div class="day">Wednesday</div>
-                    <div class="time">10:00 - 20:00</div>
+                    <div class="time">10:00 - 19:00</div>
                 </div>
                 <br>
                 <div id="Thursday" class="dateTime">
                     <div class="day">Thursday</div>
-                    <div class="time">10:00 - 20:00</div>
+                    <div class="time">10:00 - 19:00</div>
                 </div>
                 <br>
                 <div id="Friday" class="dateTime">
                     <div class="day">Friday</div>
-                    <div class="time">10:00 - 20:00</div>
+                    <div class="time">10:00 - 19:00</div>
                 </div>
                 <br>
                 <div id="Saturday" class="dateTime">
                     <div class="day">Saturday</div>
-                    <div class="time">10:00 - 20:00</div>
+                    <div class="time">10:00 - 17:00</div>
                 </div>
                 <br>
                 <div id="Sunday" class="dateTime">
                     <div class="day">Sunday</div>
-                    <div class="time">10:00 - 19:00</div>
+                    <div class="time">10:00 - 17:00</div>
                 </div>
             </div>
         </div>
 
-
         <div style="padding:16px">
-            <h1>Welcome!</h1>
-            <p>Home page</p>
-
+            <h2>Upcoming events:</h2>
             <section id="eventList" class="listContainer"></section>
             <div id="singleEvent" style="display:none;"></div>
+            <div id="singleEventImg" style="display:none;"></div>
         </div>
     </div>
 

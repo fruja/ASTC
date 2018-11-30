@@ -1,15 +1,13 @@
- 
-  #timeDiv {
+   #timeDiv {
     font-size: 15px;
     text-transform: uppercase;
     position: relative;
-    align-content: center;
-    /*max-width: 325px;*/
+    text-align: center;
     color: white;
     width: 100%;
     margin: 0 auto;
     top: 50%;
-    padding: 10px;
+    padding: 10px 0;
     display: inline-block;
     vertical-align: top;
     font-weight: 600;
@@ -17,23 +15,19 @@
   }
   
   .open {
-    background: blueviolet;
+    background: royalblue;
+    color: rgb(106, 209, 104)!important;
   }
   
   .closed {
     background: royalblue;
+    color: rgb(121, 34, 34)!important;
   }
-  
-  @media all and (max-width: 600px) {
-    #timeDiv {
-      margin-bottom: 20px;
-    }
-  }
-  
-  @media all and (min-width: 601px) {
-    #timeDiv {
-      margin-right: 15px;
-    }
+
+  .open::after, .closed::after {
+    content: " \f138";  /* this is your text. You can also use UTF-8 character codes as I do here */
+    font-family: FontAwesome;
+    font-size: 16px;
   }
   
   .dateTime {
@@ -52,7 +46,7 @@
   }
   
   .today {
-    color: #27ae60;
+    color: #8b188b;
     font-weight: 600;
   }
   
@@ -128,7 +122,7 @@
   }
   
   #modal-state:checked + .modal-overlay .modal {
-    top: 20%;
+    top: 10%;
   }
   
   .modal-overlay-close {

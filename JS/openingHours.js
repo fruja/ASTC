@@ -20,12 +20,12 @@ var checkTime = function () {
         minutes = "0" + minutes
     };
 
-    if ((dayOfWeek == 0 || dayOfWeek == 1 || dayOfWeek == 2 || dayOfWeek == 3 || dayOfWeek == 4 || dayOfWeek == 5) && hour >= 10 && hour <= 20) {
+    if ((dayOfWeek == 0 || dayOfWeek == 1 || dayOfWeek == 2 || dayOfWeek == 3 || dayOfWeek == 4 || dayOfWeek == 5) && hour >= 10 && hour <= 19) {
         timeDiv.innerHTML = 'it\'s ' + today + ' ' + hour + ':' + minutes + ' - we\'re open!';
         timeDiv.className = 'open';
     }
 
-    else if ((dayOfWeek == 6) && hour >= 10 && hour <= 19) {
+    else if ((dayOfWeek == 6) && hour >= 10 && hour <= 17) {
         timeDiv.innerHTML = 'it\'s ' + today + ' ' + hour + ':' + minutes + ' - we\'re open!';
         timeDiv.className = 'open';
     }

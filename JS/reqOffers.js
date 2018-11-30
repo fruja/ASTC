@@ -80,8 +80,14 @@ var CurrentID = pageURL.substr(pageURL.lastIndexOf('/') + 18);
 sendReq(`http://localhost:55825/Api/Offers/${CurrentID}`, function processResponse(response) {
     var singleOffer = document.getElementById("singleOffer");
     singleOffer.innerHTML = "";
+    var singleOfferImg = document.getElementById("singleOfferImg");
+    singleOfferImg.innerHTML = "";
 
     var data = JSON.parse(response);
+
+    var image = document.createElement('img');
+    image.setAttribute('src', data.OfferImg);
+    image.setAttribute('class', 'image');
 
     var offerTitle = document.createElement('h3');
     offerTitle.textContent = data.OfferTitle;
@@ -92,6 +98,7 @@ sendReq(`http://localhost:55825/Api/Offers/${CurrentID}`, function processRespon
     var shopName = document.createElement('p');
     shopName.textContent = "Shop: " + data.Shop.ShopName;
 
+    singleOfferImg.appendChild(image);
     singleOffer.appendChild(offerTitle);
     singleOffer.appendChild(offerDescription);
     singleOffer.appendChild(shopName);
