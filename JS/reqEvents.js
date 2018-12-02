@@ -1,14 +1,16 @@
-//Check if the URL you are trying to get is OK
 function sendReq(url, callbackFunction) {
     var xmlhttp
 
+    //ActiveXObject is for Internet Explorer only
     if (window.ActiveXObject) {
         xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
     }
+    //If any other browser is used, use XMLHttpRequest
     else if (window.XMLHttpRequest) {
         xmlhttp = new XMLHttpRequest();
     }
 
+    //4 means that the operation is complete and 200 means that the request was successfull
     xmlhttp.onreadystatechange = function () {
         if (xmlhttp.readyState == 4 && xmlhttp.status == '200') {
             if (callbackFunction) callbackFunction(xmlhttp.responseText);
@@ -20,9 +22,11 @@ function sendReq(url, callbackFunction) {
 
 //GET all events
 sendReq("http://localhost:55825/Api/Events", function processResponse(response) {
+    //get the eventList element from events.html
     var eventList = document.getElementById('eventList');
     eventList.innerHTML = "";
 
+    //convert the JSON data to a JavaScript object
     var data = JSON.parse(response);
 
     data.forEach(events => {
