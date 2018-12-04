@@ -12,10 +12,14 @@ function Register() {
     http.open('POST', 'http://localhost:55825/Api/Customers/CreateCustomerMember', true)
     http.setRequestHeader('Content-type', 'application/json')
     http.send(JSON.stringify(customer)) // Make sure to stringify
+    http.onload = function () {
+        console.log("You are now registered");
+        document.getElementById("registerForm").reset();
+    }
 }
 
 //Validate the input data
-function validateForm() {
+/*function validateForm() {
     var fname = document.forms["registerForm"]["fname"].value;
     var lname = document.forms["registerForm"]["lname"].value;
     var email = document.forms["registerForm"]["email"].value;
@@ -36,4 +40,4 @@ function validateForm() {
     } else {
         console.log("Successfully registered");
     }
-}
+}*/
