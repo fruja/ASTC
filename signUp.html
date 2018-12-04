@@ -45,15 +45,20 @@
         <h3 style="text-align: center;">Become a member and<br /> get rewarded now</h3>
 
         <h2>Create your account</h2>
-        <form id="registerForm" onsubmit="return validateForm()" action="membership.html" method="POST">
-            <p id=fnameValidation></p>
+        <!-- onsubmit="return validateForm()"
+         action="membership.html" method="POST"
+        -->
+
+        <form id="registerForm">
             <input id="fname" placeholder="First name" type="text" />
             <input id="lname" placeholder="Last name" type="text" />
             <input id="email" placeholder="Email" type="email" />
             <input id="pwd" placeholder="Password" type="password" />
-            <button type="submit" onclick="return Register()">Sign up</button>
         </form>
-        
+        <span id="signUpSucces"></span>
+        <!--// return stops normal action and runs Register()-->
+        <button type="submit" onclick="return Register()">Sign up</button>
+
         <br />
         <div style="text-align: center;">
             ___________________ <br /> <br />
