@@ -179,7 +179,7 @@ button {
 }
 
 .goBackContainer {
-    width: 100%;
+    width: calc(100% - 10px);
     background: white;
     color: royalblue;
     font-size: 25px;
