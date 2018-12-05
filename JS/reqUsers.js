@@ -30,10 +30,12 @@ sendReq(`http://localhost:55825/Api/Customers/${CurrentID}`, function processRes
     var data = JSON.parse(response);
 
     var UserName = document.createElement('p');
+    UserName.setAttribute('class', 'userName');
     UserName.textContent = 'Hej ' + data.Fname + '!';
 
     var Points = document.createElement('p');
-    Points.textContent =  data.Credit + 'Points';
+    Points.setAttribute('class', 'userPoints');
+    Points.textContent =  data.Credit + ' Points';
 
     //Get offers for the specific shop
     /*var offerName = document.createElement('p');
