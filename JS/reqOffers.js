@@ -35,7 +35,7 @@ sendReq("http://localhost:55825/Api/Offers", function processResponse(response) 
         card.setAttribute('href', './singleOffer.html#' + offers.ID)
 
         var offerLogoContainer = document.createElement('div');
-        offerLogoContainer.setAttribute('class', 'offerLogoContainer');
+        offerLogoContainer.setAttribute('class', 'listLogoContainer');
 
         //Small image of the shops logo on top of a offer
         var offerLogo = document.createElement('img');

@@ -49,6 +49,17 @@ body {
 .topnav .userIcon {
   float: right;
 }
+
+/* 'i' tags (font awesome) inside the active class*/
+.active i {
+    size: 30px;
+}
+
+#singleUserBarcode img{
+    width: 100%;
+}
+
+
   
   /* When the screen is less than 600 pixels wide, hide all links. Show the link that contains should open and close the topnav (.icon) */
   @media screen and (max-width: 600px) {
@@ -97,7 +108,7 @@ body {
 }
 
 .card {
-    width: 100%;
+
     max-width: 350px;
     display: block;
     background-color: white;
@@ -177,8 +188,8 @@ button {
     width: 100%;
 }
 
-/* Container with logo of the shop, on the offers */
-.offerLogoContainer {
+/* Container with logo of the shop, on the offers and voucher list */
+.listLogoContainer {
     z-index: 999;
     margin: 0 auto;
     width: 30%;
