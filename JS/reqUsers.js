@@ -46,7 +46,11 @@ sendReq(`http://localhost:55825/Api/Customers/${CurrentID}`, function processRes
 
 });
 
+
+
 sendReq(`http://localhost:55825/Api/Vouchers/`, function processResponse(response) {
+
+
     var voucherList = document.getElementById('singleUserVouchers');
     voucherList.innerHTML = "";
 
@@ -79,10 +83,32 @@ sendReq(`http://localhost:55825/Api/Vouchers/`, function processResponse(respons
 
         //makes a new 'p' tag for the description of the offer
         var voucherDescription = document.createElement('p');
-        voucherDescription.textContent = vouchers.VoucherDesc;
+        voucherDescription.textContent = vouchers.VoucherDesc;  
 
-        var validUntil = document.createElement('p');
-        validUntil.textContent = "Valid until: " + vouchers.VoucherEnd;
+        var validUntiltext = document.createElement('p');
+
+        var deadline = new Date(vouchers.VoucherEnd).getTime(); 
+        var x = setInterval(function() { 
+        var now = new Date().getTime(); 
+        var t = deadline - now; 
+        var days = Math.floor(t / (1000 * 60 * 60 * 24)); 
+        var hours = Math.floor((t%(1000 * 60 * 60 * 24))/(1000 * 60 * 60)); 
+        var minutes = Math.floor((t % (1000 * 60 * 60)) / (1000 * 60)); 
+        var seconds = Math.floor((t % (1000 * 60)) / 1000); 
+
+        validUntiltext.innerHTML = days + "d "  
+        + hours + "h " + minutes + "m " + seconds + "s "
+        validUntiltext.setAttribute('id', 'valid')
+
+        if (t < 0) { 
+        clearInterval(x); 
+        document.getElementById("valid").innerHTML = "EXPIRED"; 
+    
+        } 
+        }, 1000); 
+
+        
+
 
         voucherList.appendChild(card);
 
@@ -92,7 +118,14 @@ sendReq(`http://localhost:55825/Api/Vouchers/`, function processResponse(respons
         card.appendChild(image);
         card.appendChild(voucherTitle);
         card.appendChild(voucherDescription);
-        card.appendChild(validUntil);
+        card.appendChild(validUntiltext);
+
+
+
+
+
     });
+
+    
 
 });
