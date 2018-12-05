@@ -46,9 +46,13 @@ sendReq("http://localhost:55825/Api/Events", function processResponse(response) 
         var eventTitle = document.createElement('h3');
         eventTitle.textContent = events.EventTitle;
 
-        //makes a new 'p' tag for the description of the event
-        var eventDescription = document.createElement('p');
-        eventDescription.textContent = events.EventDesc;
+        //makes a new 'p' tag for the start time of the event
+        var eventStart = document.createElement('p');
+        eventStart.textContent = "Event start: " + events.EventStart;
+
+        //makes a new 'p' tag for the end time of the event
+        var eventEnd = document.createElement('p');
+        eventEnd.textContent = "Event end: " + events.EventEnd;
 
         //adds the 'a' tag to the 'eventList' div
         eventList.appendChild(card);
@@ -56,7 +60,8 @@ sendReq("http://localhost:55825/Api/Events", function processResponse(response) 
         //adds the information about the event in to the 'a' tag
         card.appendChild(image);
         card.appendChild(eventTitle);
-        card.appendChild(eventDescription);
+        card.appendChild(eventStart);
+        card.appendChild(eventEnd);
     });
 });
 
@@ -83,7 +88,15 @@ sendReq(`http://localhost:55825/Api/Events/${CurrentID}`, function processRespon
     var eventDescription = document.createElement('p');
     eventDescription.textContent = data.EventDesc;
 
+    var eventStart = document.createElement('p');
+    eventStart.textContent = "Event starts at: " + data.EventStart;
+
+    var eventEnd = document.createElement('p');
+    eventEnd.textContent = "Event ends at: " + data.EventEnd;
+
     singleEventImg.appendChild(image);
     singleEvent.appendChild(eventTitle);
     singleEvent.appendChild(eventDescription);
+    singleEvent.appendChild(eventStart);
+    singleEvent.appendChild(eventEnd);
 });

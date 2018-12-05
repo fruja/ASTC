@@ -52,10 +52,6 @@ sendReq("http://localhost:55825/Api/Offers", function processResponse(response) 
         var offerTitle = document.createElement('h3');
         offerTitle.textContent = offers.OfferTitle;
 
-        //makes a new 'p' tag for the description of the offer
-        var offerDescription = document.createElement('p');
-        offerDescription.textContent = offers.OfferDesc;
-
         var validUntil = document.createElement('p');
         validUntil.textContent = "Valid until: " + offers.OfferEnd;
 
@@ -67,7 +63,6 @@ sendReq("http://localhost:55825/Api/Offers", function processResponse(response) 
         offerLogoContainer.appendChild(offerLogo);
         card.appendChild(image);
         card.appendChild(offerTitle);
-        card.appendChild(offerDescription);
         card.appendChild(validUntil);
     });
 });
@@ -95,11 +90,15 @@ sendReq(`http://localhost:55825/Api/Offers/${CurrentID}`, function processRespon
     var offerDescription = document.createElement('p');
     offerDescription.textContent = data.OfferDesc;
 
+    var offerEnds = document.createElement('p');
+    offerEnds.textContent = "Valid until:" + data.OfferEnd;
+
     var shopName = document.createElement('p');
     shopName.textContent = "Shop: " + data.Shop.ShopName;
 
     singleOfferImg.appendChild(image);
     singleOffer.appendChild(offerTitle);
     singleOffer.appendChild(offerDescription);
+    singleOffer.appendChild(offerEnds);
     singleOffer.appendChild(shopName);
 });

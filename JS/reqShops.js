@@ -69,6 +69,12 @@ sendReq(`http://localhost:55825/Api/Shops/${CurrentID}`, function processRespons
     var shopDescription = document.createElement('p');
     shopDescription.textContent = data.ShopDesc;
 
+    var shopPhone = document.createElement('p');
+    shopPhone.textContent = "Phone: " + data.ShopPhone;
+
+    var shopWeb = document.createElement('p');
+    shopWeb.textContent = "Webside: " + data.ShopWeb;
+
     //Get offers for the specific shop
     /*var offerName = document.createElement('p');
     offerName.textContent = "Offers: " + data.Offer.ShopName;*/
@@ -76,5 +82,7 @@ sendReq(`http://localhost:55825/Api/Shops/${CurrentID}`, function processRespons
     singleShopImg.appendChild(image);
     singleShop.appendChild(shopTitle);
     singleShop.appendChild(shopDescription);
+    singleShop.appendChild(shopPhone);
+    singleShop.appendChild(shopWeb);
     //singleShop.appendChild(offerName);
 });
