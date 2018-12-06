@@ -199,6 +199,7 @@ button {
     float: left;
     width: 26%;
     position: absolute;
+    cursor: pointer;
 }
 
 .goBackButton::before {
