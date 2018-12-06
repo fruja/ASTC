@@ -1,30 +1,45 @@
+        function Login() {
 
-/*Here is a complete solution with application-json:
+            var email = document.querySelector('#email').value;
+            var password = document.querySelector('#pwd').value;
 
-// Input values will be grabbed by ID
-<input id="loginEmail" type="text" name="email" placeholder="Email">
-<input id="loginPassword" type="password" name="password" placeholder="Password">
 
-// return stops normal action and runs login()
-<button onclick="return login()">Submit</button>
+            var json = JSON.stringify(email, password);
 
-<script>*/
+            //Validation
+            var valEmail = document.forms["loginForm"]["email"].value;
+            var valPwd = document.forms["loginForm"]["pwd"].value;
+            var text = document.getElementById("validationInfo");
 
-function login() {
-    // Form fields, see IDs above
-    const params = {
-        email: document.querySelector('#loginEmail').value,
-        password: document.querySelector('#loginPassword').value
-    }
+            if (valEmail == "") {
+                text.innerHTML = "Email must be filled out";
+                return false;
+            } else if (valPwd == "") {
+                text.innerHTML = "Password must be filled out";
+                return false;
+            } 
 
-    const http = new XMLHttpRequest()
-    http.open('POST', '/login')
-    http.setRequestHeader('Content-type', 'application/json')
-    http.send(JSON.stringify(params)) // Make sure to stringify
-    http.onload = function () {
-        // Do whatever with response
-        alert(http.responseText)
-    }
-}
 
-//</script>
+            var xhr = new XMLHttpRequest();
+            xhr.open("GET", `http://localhost:55825/api/Customers/LoginCheck/${email}/${password}`, true);
+            xhr.setRequestHeader('Content-type', 'application/json; charset=utf-8');
+            xhr.onload = function () {
+                var userData = JSON.parse(xhr.responseText);
+                console.log (userData)
+                if (xhr.readyState == 4 && xhr.status == "200") {
+                    console.log ('Success')
+                    sessionStorage.setItem("UserID", userData);
+                    //document.getElementById("tester").innerHTML = sessionStorage.getItem("UserID");
+                    window.location.href = "./user.html";
+                    text.innerHTML = "Succesfully login!";
+
+
+                    document.getElementById("loginForm").reset();
+
+                } else {
+                    text.innerHTML = "Email or password is incorrect, please try again";
+                }
+            }
+            xhr.send(json);
+        
+        }

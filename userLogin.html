@@ -22,6 +22,7 @@
     <link rel="stylesheet" href="css/style.css">
 
     <script src="JS/navbar.js"></script>
+    <script src="JS/login.js"></script>
 </head>
 
 <body>
@@ -44,11 +45,13 @@
         <h3 style="text-align: center;">Welcome back!</h3> 
         <h2>Log in</h2>
 
-        <form action="membership.html" method="POST">
-            <input placeholder="Email" type="email" />
-            <input class="inputIcon" placeholder="Password" type="password" />
-            <button type="submit">Log in</button>
+        <p id="validationInfo"></p>
+        <form id="loginForm">
+            <input id="email" placeholder="Email" type="text" />
+            <input id="pwd" placeholder="Password" type="password" />
         </form>
+
+        <button type="submit" onclick="return Login()">Logsdffdg in</button>
 
         <br/>
         <div style="text-align: center;">
@@ -58,6 +61,7 @@
         <form action="signUp.html" method="POST">
             <button>Sign up</button>
         </form>
+        <div id="tester"></div>
     </div>
 
 </body>

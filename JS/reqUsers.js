@@ -1,3 +1,11 @@
+   //document.getElementById("tester").innerHTML = sessionStorage.getItem("UserID");
+if (sessionStorage.getItem("UserID") == null)
+{
+    window.location.href = "./userLogin.html";
+
+}
+
+
 //Check if the URL you are trying to get is OK
 function sendReq(url, callbackFunction) {
     var xmlhttp
@@ -20,7 +28,7 @@ function sendReq(url, callbackFunction) {
 
 //Finds the current ID of the URL
 // var pageURL = window.location.href;
-var CurrentID = 1;
+var CurrentID = sessionStorage.getItem("UserID");
 
 //GET single shop by the current ID
 sendReq(`http://localhost:55825/Api/Customers/${CurrentID}`, function processResponse(response) {
