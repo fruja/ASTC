@@ -5,7 +5,10 @@ if (sessionStorage.getItem("UserID") == null)
 
 }
 
-
+function logOut (){
+    sessionStorage.removeItem('UserID');
+    window.location.href = "./index.html";
+}
 //Check if the URL you are trying to get is OK
 function sendReq(url, callbackFunction) {
     var xmlhttp
@@ -45,12 +48,19 @@ sendReq(`http://localhost:55825/Api/Customers/${CurrentID}`, function processRes
     Points.setAttribute('class', 'userPoints');
     Points.textContent =  data.Credit + ' Points';
 
+   // var logOut = document.createElement('button');
+    //logOut.setAttribute('onclick', logOut());
+    //logOut.textContent =  'Logout';
+
+
+
     //Get offers for the specific shop
     /*var offerName = document.createElement('p');
     offerName.textContent = "Offers: " + data.Offer.ShopName;*/
 
     singleUser.appendChild(UserName);
     singleUser.appendChild(Points);
+   // singleUser.appendChild(logOut);
 
 });
 
