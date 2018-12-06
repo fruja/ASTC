@@ -30,7 +30,10 @@ sendReq("http://localhost:55825/Api/Shops", function processResponse(response) {
         card = document.createElement('a');
         card.setAttribute('class', 'card');
         card.setAttribute('id', shops.ID);
-        card.setAttribute('href', './singleShop.html#' + shops.ID)
+        card.setAttribute('href', './singleShop.html#' + shops.ID);
+
+        var p = document.createElement('p');
+        p.textContent = 'Category: ' + shops.Cat.CategoryName;
 
         //makes a new 'img' tag for the image of the shop
         var image = document.createElement('img');
@@ -43,6 +46,7 @@ sendReq("http://localhost:55825/Api/Shops", function processResponse(response) {
 
         //adds the information about the shop in to the 'a' tag
         card.appendChild(image);
+        card.appendChild(p);
     });
 });
 
@@ -75,14 +79,55 @@ sendReq(`http://localhost:55825/Api/Shops/${CurrentID}`, function processRespons
     var shopWeb = document.createElement('p');
     shopWeb.textContent = "Webside: " + data.ShopWeb;
 
-    //Get offers for the specific shop
-    /*var offerName = document.createElement('p');
-    offerName.textContent = "Offers: " + data.Offer.ShopName;*/
-
     singleShopImg.appendChild(image);
     singleShop.appendChild(shopTitle);
     singleShop.appendChild(shopDescription);
     singleShop.appendChild(shopPhone);
     singleShop.appendChild(shopWeb);
-    //singleShop.appendChild(offerName);
+});
+
+//GET offers from the specific shop
+sendReq(`http://localhost:55825/Api/Offers/Shops/${CurrentID}`, function processResponse(response) {
+    var offerFromShop = document.getElementById("offerFromShopID");
+    offerFromShop.innerHTML = "";
+
+    var data = JSON.parse(response);
+
+    data.forEach(offers => {
+        var header = document.createElement('h3');
+        header.textContent = "Offers from " + offers.Shop.ShopName + ":";
+
+        //makes a new 'a' tag for every offer (like this: <a class="card" href="#"> </a>)
+        card = document.createElement('a');
+        card.setAttribute('class', 'card');
+        card.setAttribute('id', offers.ID);
+        card.setAttribute('href', './singleOffer.html#' + offers.ID)
+
+        //Small image of the shops logo on top of a offer
+        var offerLogo = document.createElement('img');
+        offerLogo.setAttribute('src', offers.Shop.ShopImg);
+        offerLogo.setAttribute('class', 'image');
+
+        //makes a new 'img' tag for the image of the offer
+        var image = document.createElement('img');
+        image.setAttribute('src', offers.OfferImg);
+        image.setAttribute('alt', 'Image of: ' + offers.OfferTitle);
+        image.setAttribute('class', 'image');
+
+        //makes a new 'h3' tag for the title of the offer
+        var offerTitle = document.createElement('h3');
+        offerTitle.textContent = offers.OfferTitle;
+
+        var validUntil = document.createElement('p');
+        validUntil.textContent = "Valid until: " + offers.OfferEnd;
+
+        //adds the 'a' tag to the 'offerFromShop' div
+        offerFromShop.appendChild(header);
+        offerFromShop.appendChild(card);
+
+        //adds the information about the offer in to the 'a' tag
+        card.appendChild(image);
+        card.appendChild(offerTitle);
+        card.appendChild(validUntil);
+    });
 });
