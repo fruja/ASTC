@@ -41,12 +41,15 @@ function Register() {
     xhr.onload = function () {
         var users = JSON.parse(xhr.responseText);
         if (xhr.readyState == 4 && xhr.status == "200") {
+            sessionStorage.setItem("UserID", users);
             console.table(users);
             window.location.href = "./user.html";
             document.getElementById("registerForm").reset();
+            
         } else {
             console.error(users);
         }
     }
     xhr.send(json);
+
 }
