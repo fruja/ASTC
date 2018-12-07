@@ -126,21 +126,14 @@ body {
     border: none;
     outline: none;
     padding: 12px 16px;
-    background-color: black;
     cursor: pointer;
 }
 
 /* Add a light grey background on mouse-over */
 .btn:hover {
-    background-color: #ddd;
+    font-weight: bold;
+    color: black;
 }
-  
-/* Add a dark background to the active button */
-.btn.active {
-    background-color: #666;
-    color: white;
-}
-
 
 /* LOGIN/SIGN UP styling */
 input {
@@ -160,7 +153,6 @@ input {
 }
 
 button {
-    
     padding: 12px 20px;
     margin: 8px 0;
     box-sizing: border-box;
@@ -224,6 +216,58 @@ button {
 }
 
 
+/* Image slideshow */
+.imgSlider {display: none}
+img {vertical-align: middle;}
+
+/* Slideshow container */
+.slideshow-container {
+  position: relative;
+  box-sizing: border-box
+}
+
+
+/* Animates the shop icons */
+@-webkit-keyframes fadeInRight {
+    from {
+      opacity: 0;
+      -webkit-transform: translate3d(100%, 0, 0);
+      transform: translate3d(100%, 0, 0);
+    }
+  
+    to {
+      opacity: 1;
+      -webkit-transform: translate3d(0, 0, 0);
+      transform: translate3d(0, 0, 0);
+    }
+}
+  
+@keyframes fadeInRight {
+    from {
+      opacity: 0;
+      -webkit-transform: translate3d(100%, 0, 0);
+      transform: translate3d(100%, 0, 0);
+    }
+  
+    to {
+      opacity: 1;
+      -webkit-transform: translate3d(0, 0, 0);
+      transform: translate3d(0, 0, 0);
+    }
+}
+  
+.fadeInRight {
+    -webkit-animation-name: fadeInRight;
+    animation-name: fadeInRight;
+}
+
+.animated {
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+}
+
 /* When the screen is less than 600 pixels wide: */
 @media screen and (max-width: 600px) {
     /* When the screen is less than 600 pixels wide, hide all links. Show the link that contains should open and close the topnav (.icon) */
@@ -263,6 +307,14 @@ button {
     #singleUserBarcode{
         width: calc(100% - 40px); 
     }
+    .desktopImg {
+        display:none;
+        visibility: hidden;
+    }
+    .mobileImg {
+        display:block;
+        visibility: visible;
+    }
 }
 
 /* When the screen is more than than 600 pixels wide: */
@@ -272,5 +324,13 @@ button {
     }
     .shopCard {
         margin-right: 10px;
+    }
+    .desktopImg {
+        display:block;
+        visibility: visible;
+    }
+    .mobileImg {
+        display:none;
+        visibility: hidden;
     }
 }
