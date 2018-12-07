@@ -46,10 +46,17 @@ sendReq(`http://localhost:55825/Api/Vouchers/${CurrentID}`, function processResp
 
     var validUntil = document.createElement('p');
     validUntil.textContent = "Valid until: " + data.VoucherEnd;
+ 
+    var redeemVoucher = document.createElement('button');
+    redeemVoucher.textContent = "Buy";
+    redeemVoucher.setAttribute('id', data.VoucherID);
+    redeemVoucher.setAttribute('onclick', redeemVoucher());
+
 
     singleVoucherImg.appendChild(image);
     singleVoucher.appendChild(voucherTitle);
     singleVoucher.appendChild(voucherDescription);
     singleVoucher.appendChild(voucherPoints);
     singleVoucher.appendChild(validUntil);
+    singleVoucher.appendChild(redeemVoucher);
 });
