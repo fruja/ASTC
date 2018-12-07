@@ -19,6 +19,9 @@ function sendReq(url, callbackFunction) {
 }
 
 function redeemVoucher() {
+
+    //Tell the user the success or error message
+    var text = document.getElementById("succesInfo");
     //Finds the current ID of the URL
     var pageURL = window.location.href;
     var CurrentID = pageURL.substr(pageURL.lastIndexOf('/') + 20);
@@ -34,8 +37,9 @@ function redeemVoucher() {
     xhr.onload = function () {
         if (xhr.readyState == 4 && xhr.status == "200") {
             console.log("Success")
+            text.innerHTML = "Success";
         } else {
-            console.log("Errir")
+            text.innerHTML = "I'm affraid you can't afford this item";
         }
     }
     xhr.send(json);
