@@ -1,5 +1,5 @@
 function Login() {
-    //Get the value from the email and password
+    //Get the value from the email and password input
     var email = document.querySelector('#email').value;
     var password = document.querySelector('#pwd').value;
 
@@ -9,9 +9,11 @@ function Login() {
     //Validate email and password
     var valEmail = document.forms["loginForm"]["email"].value;
     var valPwd = document.forms["loginForm"]["pwd"].value;
+
+    //Tell the user the validation infotmation
     var text = document.getElementById("validationInfo");
 
-    //checks if the values are empty
+    //check if the values are empty
     if (valEmail == "") {
         text.innerHTML = "Email must be filled out";
         return false;
@@ -37,5 +39,4 @@ function Login() {
         }
     }
     xhr.send(json);
-
 }

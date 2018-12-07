@@ -18,8 +18,6 @@ function sendReq(url, callbackFunction) {
     xmlhttp.send();
 }
 
-
-
 //GET all offers
 sendReq("http://localhost:55825/Api/Offers", function processResponse(response) {
     var offerList = document.getElementById('offerList');
@@ -28,7 +26,7 @@ sendReq("http://localhost:55825/Api/Offers", function processResponse(response) 
     var data = JSON.parse(response);
 
     data.forEach(offers => {
-        //makes a new 'a' tag for every offer (like this: <a class="card" href="#"> </a>)
+        //makes a new 'a' tag for every offer
         card = document.createElement('a');
         card.setAttribute('class', 'card');
         card.setAttribute('id', offers.ID);
@@ -52,6 +50,7 @@ sendReq("http://localhost:55825/Api/Offers", function processResponse(response) 
         var offerTitle = document.createElement('h3');
         offerTitle.textContent = offers.OfferTitle;
 
+        //makes a new p' tag for the expiration of the offer
         var validUntil = document.createElement('p');
         validUntil.textContent = "Valid until: " + offers.OfferEnd;
 

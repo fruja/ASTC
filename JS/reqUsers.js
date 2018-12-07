@@ -1,14 +1,14 @@
-   //document.getElementById("tester").innerHTML = sessionStorage.getItem("UserID");
-if (sessionStorage.getItem("UserID") == null)
-{
+//Start by checking if the user is logged in. If not, he gets the login page when clicking the user icon
+if (sessionStorage.getItem("UserID") == null) {
     window.location.href = "./userLogin.html";
-
 }
 
-function logOut (){
+function logOut() {
+    //Forget the user and redirect to the index page, if the user logges out
     sessionStorage.removeItem('UserID');
     window.location.href = "./index.html";
 }
+
 //Check if the URL you are trying to get is OK
 function sendReq(url, callbackFunction) {
     var xmlhttp
@@ -29,11 +29,10 @@ function sendReq(url, callbackFunction) {
     xmlhttp.send();
 }
 
-//Finds the current ID of the URL
-// var pageURL = window.location.href;
+//Gets the ID of the user that is logged in
 var CurrentID = sessionStorage.getItem("UserID");
 
-//GET single shop by the current ID
+//GET customer by the current ID
 sendReq(`http://localhost:55825/Api/Customers/${CurrentID}`, function processResponse(response) {
     var singleUser = document.getElementById("singleUser");
     singleUser.innerHTML = "";
@@ -42,108 +41,84 @@ sendReq(`http://localhost:55825/Api/Customers/${CurrentID}`, function processRes
 
     var UserName = document.createElement('p');
     UserName.setAttribute('class', 'userName');
-    UserName.textContent = 'Hej ' + data.Fname + '!';
+    UserName.textContent = 'Hey ' + data.Fname + '!'; //Welcome the user
 
     var Points = document.createElement('p');
     Points.setAttribute('class', 'userPoints');
-    Points.textContent =  data.Credit + ' Points';
-
-   // var logOut = document.createElement('button');
-    //logOut.setAttribute('onclick', logOut());
-    //logOut.textContent =  'Logout';
-
-
-
-    //Get offers for the specific shop
-    /*var offerName = document.createElement('p');
-    offerName.textContent = "Offers: " + data.Offer.ShopName;*/
+    Points.textContent = data.Credit + ' Points';
 
     singleUser.appendChild(UserName);
     singleUser.appendChild(Points);
-   // singleUser.appendChild(logOut);
-
 });
 
-
-
+//GET all vouchers
 sendReq(`http://localhost:55825/Api/Vouchers/`, function processResponse(response) {
-
-
     var voucherList = document.getElementById('singleUserVouchers');
     voucherList.innerHTML = "";
 
     var data = JSON.parse(response);
 
     data.forEach(vouchers => {
-        //makes a new 'a' tag for every shop (like this: <a class="card" href="#"> </a>)
+        //makes a new 'a' tag for every voucher
         card = document.createElement('a');
         card.setAttribute('class', 'card');
         card.setAttribute('id', vouchers.ID);
         card.setAttribute('href', './singleVoucher.html#' + vouchers.ID)
 
+        //Makes a container for the logo of the shop, on top of a voucher
         var listLogoContainer = document.createElement('div');
         listLogoContainer.setAttribute('class', 'listLogoContainer');
- 
-        //Small image of the shops logo on top of a offer
+
+        //Small image of the shops logo on top of a voucher
         var voucherLogo = document.createElement('img');
         voucherLogo.setAttribute('src', vouchers.Shop.ShopImg);
         voucherLogo.setAttribute('class', 'image');
 
-        //makes a new 'img' tag for the image of the shop
+        //makes a new 'img' tag for the image of the voucher
         var image = document.createElement('img');
         image.setAttribute('src', vouchers.VoucherImg);
         image.setAttribute('alt', 'Billede af:' + vouchers.VoucherTitle);
         image.setAttribute('class', 'image')
 
-                //makes a new 'h3' tag for the title of the offer
+        //makes a new 'h3' tag for the title of the voucher
         var voucherTitle = document.createElement('h3');
         voucherTitle.textContent = vouchers.VoucherTitle;
 
-        //makes a new 'p' tag for the description of the offer
+        //makes a new 'p' tag for the description of the voucher
         var voucherDescription = document.createElement('p');
-        voucherDescription.textContent = vouchers.VoucherDesc;  
+        voucherDescription.textContent = vouchers.VoucherDesc;
 
+        //makes a new 'p' tag for the expiration on a voucher
         var validUntiltext = document.createElement('p');
 
-        var deadline = new Date(vouchers.VoucherEnd).getTime(); 
-        var x = setInterval(function() { 
-        var now = new Date().getTime(); 
-        var t = deadline - now; 
-        var days = Math.floor(t / (1000 * 60 * 60 * 24)); 
-        var hours = Math.floor((t%(1000 * 60 * 60 * 24))/(1000 * 60 * 60)); 
-        var minutes = Math.floor((t % (1000 * 60 * 60)) / (1000 * 60)); 
-        var seconds = Math.floor((t % (1000 * 60)) / 1000); 
+        //Countdown to when the voucher expires
+        var deadline = new Date(vouchers.VoucherEnd).getTime();
+        var x = setInterval(function () {
+            var now = new Date().getTime();
+            var t = deadline - now;
+            var days = Math.floor(t / (1000 * 60 * 60 * 24));
+            var hours = Math.floor((t % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            var minutes = Math.floor((t % (1000 * 60 * 60)) / (1000 * 60));
+            var seconds = Math.floor((t % (1000 * 60)) / 1000);
 
-        validUntiltext.innerHTML = days + "d "  
-        + hours + "h " + minutes + "m " + seconds + "s "
-        validUntiltext.setAttribute('id', 'valid')
+            //adds the countdown to the 'p' tag
+            validUntiltext.innerHTML = days + "d " + hours + "h " + minutes + "m " + seconds + "s "
+            validUntiltext.setAttribute('id', 'valid')
 
-        if (t < 0) { 
-        clearInterval(x); 
-        document.getElementById("valid").innerHTML = "EXPIRED"; 
-    
-        } 
-        }, 1000); 
+            //change the conutdown to "EXPIRED" when the voucher expires
+            if (t < 0) {
+                clearInterval(x);
+                document.getElementById("valid").innerHTML = "EXPIRED";
+            }
+        }, 1000); //update the time every second
 
-        
-
-
-        voucherList.appendChild(card);
-
-        //adds the information about the offer in to the 'a' tag
+        listLogoContainer.appendChild(voucherLogo); //adds the logo to the logo container
+        //adds the information about the voucher in to the 'a' tag
         card.appendChild(listLogoContainer);
-        listLogoContainer.appendChild(voucherLogo);
         card.appendChild(image);
         card.appendChild(voucherTitle);
         card.appendChild(voucherDescription);
         card.appendChild(validUntiltext);
-
-
-
-
-
+        voucherList.appendChild(card); //adds the cards to the list of vouchers
     });
-
-    
-
 });

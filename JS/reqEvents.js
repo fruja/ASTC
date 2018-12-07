@@ -26,11 +26,11 @@ sendReq("http://localhost:55825/Api/Events", function processResponse(response) 
     var eventList = document.getElementById('eventList');
     eventList.innerHTML = "";
 
-    //convert the JSON data to a JavaScript object
+    //convert the JSON data to JavaScript object
     var data = JSON.parse(response);
 
     data.forEach(events => {
-        //makes a new 'a' tag for every event (like this: <a class="card" href="#"> </a>)
+        //makes a new 'a' tag for every event (like this: <a class="card" id="events.ID" href="#"> </a>)
         card = document.createElement('a');
         card.setAttribute('class', 'card');
         card.setAttribute('id', events.ID);

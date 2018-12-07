@@ -1,5 +1,5 @@
 var now = new Date();
-var weekday = new Array(7);
+var weekday = new Array(7); // make an array of the weekdays
 weekday[0] = "Monday";
 weekday[1] = "Tuesday";
 weekday[2] = "Wednesday";
@@ -9,7 +9,7 @@ weekday[5] = "Saturday";
 weekday[6] = "Sunday";
 
 var checkTime = function () {
-    var today = weekday[now.getDay()-1];
+    var today = weekday[now.getDay()-1]; // -1 because getDay starts with sunday, and we want monday to be the first day
     var timeDiv = document.getElementById('timeDiv');
     var dayOfWeek = now.getDay();
     var hour = now.getHours();
@@ -20,16 +20,19 @@ var checkTime = function () {
         minutes = "0" + minutes
     };
 
+    // open from 10 - 19 monday to saturday. Tell the user that it's open in that time space
     if ((dayOfWeek == 0 || dayOfWeek == 1 || dayOfWeek == 2 || dayOfWeek == 3 || dayOfWeek == 4 || dayOfWeek == 5) && hour >= 10 && hour <= 19) {
         timeDiv.innerHTML = 'it\'s ' + today + ' ' + hour + ':' + minutes + ' - we\'re open!';
         timeDiv.className = 'open';
     }
 
+    // open from 10 - 17 sunday. Tell the user that it's open in that time space
     else if ((dayOfWeek == 6) && hour >= 10 && hour <= 17) {
         timeDiv.innerHTML = 'it\'s ' + today + ' ' + hour + ':' + minutes + ' - we\'re open!';
         timeDiv.className = 'open';
     }
 
+    // inform the user that ASTC is closed
     else {
         timeDiv.innerHTML = 'It\'s ' + today + ' ' + hour + ':' + minutes + ' - we\'re closed!';
         timeDiv.className = 'closed';
@@ -38,7 +41,7 @@ var checkTime = function () {
 
 var currentDay = weekday[now.getDay()-1];
 var currentDayID = currentDay; //gets todays weekday and turns it into id
-document.getElementById(currentDayID).classList.toggle("today"); //hightlights today in the view hours modal popup
+document.getElementById(currentDayID).classList.toggle("today"); //hightlights today in the 'view hours modal'
 
-setInterval(checkTime, 1000);
+setInterval(checkTime, 1000); // check the time every second
 checkTime();

@@ -26,9 +26,9 @@ sendReq("http://localhost:55825/Api/Shops", function processResponse(response) {
 	var data = JSON.parse(response);
 
 	data.forEach(shops => {
-		//makes a new 'a' tag for every shop (like this: <a class="card" href="#"> </a>)
+		//makes a new 'a' tag for every shop)
 		card = document.createElement('a');
-		card.setAttribute('class', 'shopCard ' + shops.Cat.CategoryName + ' show' + ' animated fadeInRight');
+		card.setAttribute('class', 'shopCard ' + shops.Cat.CategoryName + ' show');
 		card.setAttribute('id', shops.ID);
 		card.setAttribute('href', './singleShop.html#' + shops.ID);
 
@@ -83,7 +83,7 @@ sendReq(`http://localhost:55825/Api/Shops/${CurrentID}`, function processRespons
 	singleShop.appendChild(shopWeb);
 });
 
-//GET offers from the specific shop
+//GET offers from a specific shop
 sendReq(`http://localhost:55825/Api/Offers/Shops/${CurrentID}`, function processResponse(response) {
 	var offerFromShop = document.getElementById("offerFromShopID");
 	offerFromShop.innerHTML = "";
@@ -91,6 +91,7 @@ sendReq(`http://localhost:55825/Api/Offers/Shops/${CurrentID}`, function process
 	var data = JSON.parse(response);
 
 	data.forEach(offers => {
+		//makes a header that tells which shop the offers are from
 		var header = document.createElement('h3');
 		header.textContent = "Offers from " + offers.Shop.ShopName + ":";
 
@@ -115,10 +116,11 @@ sendReq(`http://localhost:55825/Api/Offers/Shops/${CurrentID}`, function process
 		var offerTitle = document.createElement('h3');
 		offerTitle.textContent = offers.OfferTitle;
 
+		//makes a new 'p' tag for the expiration date of the offer
 		var validUntil = document.createElement('p');
 		validUntil.textContent = "Valid until: " + offers.OfferEnd;
 
-		//adds the 'a' tag to the 'offerFromShop' div
+		//adds the header and the card to the 'offerFromShop' div
 		offerFromShop.appendChild(header);
 		offerFromShop.appendChild(card);
 
@@ -130,6 +132,8 @@ sendReq(`http://localhost:55825/Api/Offers/Shops/${CurrentID}`, function process
 });
 
 
+//Filter shops by category
+//Start by showing all shops
 filterSelection("all")
 function filterSelection(c) {
 	var x, i;
