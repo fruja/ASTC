@@ -62,6 +62,7 @@ sendReq(`http://localhost:55825/Api/Shops/${CurrentID}`, function processRespons
 	var image = document.createElement('img');
 	image.setAttribute('src', data.ShopImg);
 	image.setAttribute('class', 'image');
+	image.setAttribute('alt', 'Image of: ' + data.ShopName + ' logo');
 
 	var shopTitle = document.createElement('h3');
 	shopTitle.textContent = data.ShopName;
