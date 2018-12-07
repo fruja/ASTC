@@ -83,6 +83,7 @@ sendReq(`http://localhost:55825/Api/Offers/${CurrentID}`, function processRespon
     var image = document.createElement('img');
     image.setAttribute('src', data.OfferImg);
     image.setAttribute('class', 'image');
+    image.setAttribute('alt', 'Image of: ' + data.OfferTitle);
 
     var offerTitle = document.createElement('h3');
     offerTitle.textContent = data.OfferTitle;
