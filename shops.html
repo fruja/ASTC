@@ -5,16 +5,17 @@
     <title>Aalborg Storcenters shops</title>
 
     <meta charset="utf-8">
-    <meta name="description" content="Overview over all the shops at Aalborg Storcenter. Choose a specific shop and find that specific shops offers.">
-    <meta name="author" content="PWE_Group9">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Overview over all the shops at Aalborg Storcenter. Choose a specific shop and find it's offers.">
+    <meta name="author" content="PWE_Group8">
 
-    <!--Sets the logo in the browser tab-->
+    <!-- Sets the logo in the browser tab -->
     <link rel="icon" type="image/jpg" href="img/astc_logo_s.jpg">
 
     <!-- CSS import-->
     <link rel="stylesheet" href="css/style.css">
 
+    <!-- CSS for the navigation bar -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Load an icon library to show a hamburger menu (bars) on small screens -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- User icon library -->
@@ -27,6 +28,7 @@
 </head>
 
 <body>
+    <!-- Menu -->
     <div class="topnav" id="myTopnav">
         <a href="index.html"><img src="./img/astc_logo_white.png" alt="ASTS_logo" style="height:17px;border:0;"></a>
         <a href="index.html">Home</a>
@@ -42,9 +44,12 @@
         </a>
     </div>
 
+    <!-- Shops -->
     <div style="padding:16px">
-        <h1>Shops!</h1>
-        <p>List of all shops</p>
+        <h1>Shops</h1>
+        <p>Here is a list of all the shops</p>
+
+        <!-- Filter by category -->
         <div id="myBtnContainer">
             <button class="btn active" onclick="filterSelection('all')"> Show all</button>
             <button class="btn" onclick="filterSelection('Electronics')"> Electronics</button>
@@ -53,12 +58,13 @@
             <button class="btn" onclick="filterSelection('Clothing')"> Clothing</button>
             <button class="btn" onclick="filterSelection('Food')"> Food</button>
             <button class="btn" onclick="filterSelection('Beauty')"> Beauty</button>
-          </div>
+        </div>
+
+        <!-- List the shops -->
         <section id="shopList" class="listContainer"></section>
         <div id="singleShop" style="display:none;"></div>
         <div id="singleShopImg" style="display:none;"></div>
         <div id="offerFromShopID" style="display:none;"></div>
     </div>
 </body>
-
 </html>
