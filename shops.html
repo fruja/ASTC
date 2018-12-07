@@ -45,7 +45,15 @@
     <div style="padding:16px">
         <h1>Shops!</h1>
         <p>List of all shops</p>
-
+        <div id="myBtnContainer">
+            <button class="btn active" onclick="filterSelection('all')"> Show all</button>
+            <button class="btn" onclick="filterSelection('Electronics')"> Electronics</button>
+            <button class="btn" onclick="filterSelection('Groceries')"> Groceries</button>
+            <button class="btn" onclick="filterSelection('Toys')"> Toys</button>
+            <button class="btn" onclick="filterSelection('Clothing')"> Clothing</button>
+            <button class="btn" onclick="filterSelection('Food')"> Food</button>
+            <button class="btn" onclick="filterSelection('Beauty')"> Beauty</button>
+          </div>
         <section id="shopList" class="listContainer"></section>
         <div id="singleShop" style="display:none;"></div>
         <div id="singleShopImg" style="display:none;"></div>
