@@ -55,8 +55,8 @@
       top: 60%;
     }
   }
-  /* view hours modal */
   
+  /* view hours modal */
   @keyframes fade-in {
     0% {
       opacity: 0;
@@ -99,8 +99,6 @@
     line-height: 1.8;
     color: black;
   }
-  
-  
   
   .modal h2 {
     margin-top: 0;

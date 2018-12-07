@@ -47,11 +47,11 @@
     <!-- Shops -->
     <div style="padding:16px">
         <h1>Shops</h1>
-        <p>Here is a list of all the shops</p>
 
+        <p>Filter by category:</p>
         <!-- Filter by category -->
         <div id="myBtnContainer">
-            <button class="btn active" onclick="filterSelection('all')"> Show all</button>
+            <button class="btn" onclick="filterSelection('all')"> Show all</button>
             <button class="btn" onclick="filterSelection('Electronics')"> Electronics</button>
             <button class="btn" onclick="filterSelection('Groceries')"> Groceries</button>
             <button class="btn" onclick="filterSelection('Toys')"> Toys</button>
@@ -59,6 +59,7 @@
             <button class="btn" onclick="filterSelection('Food')"> Food</button>
             <button class="btn" onclick="filterSelection('Beauty')"> Beauty</button>
         </div>
+        </br>
 
         <!-- List the shops -->
         <section id="shopList" class="listContainer"></section>
@@ -67,4 +68,5 @@
         <div id="offerFromShopID" style="display:none;"></div>
     </div>
 </body>
+
 </html>
