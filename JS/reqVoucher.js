@@ -1,3 +1,36 @@
+function redeemVoucher() {
+
+   
+    //Finds the current ID of the URL
+    var pageURL = window.location.href;
+    var CurrentID = pageURL.substr(pageURL.lastIndexOf('/') + 20);
+        //The ID's of the imputs in th form from 'signUp.html'
+    
+            var userID = sessionStorage.getItem("UserID");
+            var voucherID = CurrentID;
+    
+        
+        
+    
+        var json = JSON.stringify(userID + voucherID);
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", `http://localhost:55825/Api/Vouchers/RedeemVoucher/${userID}/${voucherID}`, true);
+        xhr.setRequestHeader('Content-type', 'application/json; charset=utf-8');
+        xhr.onload = function () {
+           // var redeem = JSON.parse(xhr.responseText);
+            if (xhr.readyState == 4 && xhr.status == "200") {   
+                console.log ("Success")         
+              //  console.table(redeem);
+                
+            } else {
+                console.log ("Errir")
+              //  console.error(redeem);
+            }
+        }
+        xhr.send(json);
+    
+    }
+
 //Check if the URL you are trying to get is OK
 function sendReq(url, callbackFunction) {
     var xmlhttp
@@ -46,6 +79,8 @@ sendReq(`http://localhost:55825/Api/Vouchers/${CurrentID}`, function processResp
 
     var validUntil = document.createElement('p');
     validUntil.textContent = "Valid until: " + data.VoucherEnd;
+ 
+
 
     singleVoucherImg.appendChild(image);
     singleVoucher.appendChild(voucherTitle);
@@ -53,3 +88,4 @@ sendReq(`http://localhost:55825/Api/Vouchers/${CurrentID}`, function processResp
     singleVoucher.appendChild(voucherPoints);
     singleVoucher.appendChild(validUntil);
 });
+

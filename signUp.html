@@ -6,12 +6,15 @@
 
     <meta charset="utf-8">
     <meta name="description" content="Become a member and get points everytime you buy something at Aalborg Storcenter. The points can be used on special vouchers.">
-    <meta name="author" content="PWE_Group9">
+    <meta name="author" content="PWE_Group8">
 
     <!--Sets the logo in the browser tab-->
     <link rel="icon" type="image/jpg" href="img/astc_logo_s.jpg">
 
-    <!--CSS-->
+    <!-- CSS import -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- CSS for the navigation bar -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Load an icon library to show a hamburger menu (bars) on small screens -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -19,13 +22,13 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU"
         crossorigin="anonymous">
 
-    <link rel="stylesheet" href="css/style.css">
-
+    <!-- JS import -->
     <script src="JS/navbar.js"></script>
     <script src="JS/signUp.js"></script>
 </head>
 
 <body>
+    <!-- Menu -->
     <div class="topnav" id="myTopnav">
         <a href="index.html"><img src="./img/astc_logo_white.png" alt="ASTS_logo" style="height:17px;border:0;"></a>
         <a href="index.html">Home</a>
@@ -41,14 +44,14 @@
         </a>
     </div>
 
+    <!-- Sign up page -->
     <div style="padding:16px">
         <h3 style="text-align: center;">Become a member and<br /> get rewarded now</h3>
 
         <h2>Create your account</h2>
-        <!-- onsubmit="return validateForm()"
-         action="membership.html" method="POST"
-        -->
-        <p id="validationInfo"></p>
+        <p id="validationInfo"></p> <!-- Is only visible if the user left any input fielsd empty -->
+
+        <!-- Sign up form -->
         <form id="registerForm">
             <input id="fname" placeholder="First name" type="text"/>
             <input id="lname" placeholder="Last name" type="text"/>
@@ -56,8 +59,7 @@
             <input id="pwd" placeholder="Password" type="password"/>
         </form>
         
-        <!--// return stops normal action and runs Register()-->
-        <button type="submit" onclick="return Register()">Sign up</button>
+        <button class="signUpLoginBtn" type="submit" onclick="return Register()">Sign up</button>
 
         <br />
         <div style="text-align: center;">
@@ -65,11 +67,10 @@
             Already a member? <br /> <br />
         </div>
 
+        <!-- Redirects you to the login page, if you already are a member -->
         <form action="userLogin.html" method="POST">
-            <button>Log in</button>
+            <button class="signUpLoginBtn">Log in</button>
         </form>
     </div>
-
 </body>
-
 </html>

@@ -100,3 +100,4 @@ sendReq(`http://localhost:55825/Api/Events/${CurrentID}`, function processRespon
     singleEvent.appendChild(eventStart);
     singleEvent.appendChild(eventEnd);
 });
+
