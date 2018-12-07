@@ -6,12 +6,11 @@
 
     <meta charset="utf-8">
     <meta name="description" content="Find all the information you need about Aalborg Storcenter. Become a member and get points everytime you purchase something at the center. Get a map over the entire center and find a list over all the shops, and their great offers. Find all the exciting events coming up at Aalborg Storcenter!">
-    <meta name="author" content="PWE_Group9">
-
-    <!--Sets the logo in the browser tab-->
-    <link rel="icon" type="image/jpg" href="img/astc_logo_s.jpg">
-
+    <meta name="author" content="PWE_Group8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Sets the logo in the browser tab -->
+    <link rel="icon" type="image/jpg" href="img/astc_logo_s.jpg">
 
     <!-- CSS import -->
     <link rel="stylesheet" href="css/style.css">
@@ -27,11 +26,11 @@
     <!-- JS import -->
     <script src="JS/navbar.js"></script>
     <script src="JS/reqEvents.js"></script>
-
 </head>
 
 <body>
     <div>
+        <!-- Menu -->
         <div class="topnav" id="myTopnav">
             <a href="index.html"><img src="./img/astc_logo_white.png" alt="ASTS_logo" style="height:17px;border:0;"></a>
             <a href="index.html" class="active">Home</a>
@@ -47,7 +46,7 @@
             </a>
         </div>
 
-
+        <!-- Slider -->
         <div class="slideshow-container">
             <div class="imgSlider">
                 <img class="desktopImg" src="./img/slider/Slider1.png" style="width:100vw">
@@ -56,7 +55,6 @@
             <div class="imgSlider">
                 <img class="desktopImg" src="./img/slider/Slider2.png" style="width:100vw">
                 <img class="mobileImg" src="./img/slider/Slider2mobile.png" style="width:100%">
-
             </div>
             <div class="imgSlider">
                 <img class="desktopImg" src="./img/slider/Slider3.png" style="width:100vw">
@@ -67,7 +65,7 @@
             <a class="next" onclick="plusSlides(1, 0)">&#10095;</a>
         </div>
 
-
+        <!-- Opening hours -->
         <label id="timeDiv" for="modal-state"></label>
         <input type="checkbox" name="modal-state" id="modal-state">
 
@@ -113,6 +111,7 @@
             </div>
         </div>
 
+        <!-- Events -->
         <div style="padding:16px">
             <h2>Upcoming events:</h2>
             <section id="eventList" class="listContainer"></section>
@@ -121,28 +120,32 @@
         </div>
     </div>
 
+    <!-- Script for the slider -->
     <script>
-        var slideIndex = [1];
+        var slideIndex = [1]; //set the slideIndex to 1 (First picture)
         var slideId = ["imgSlider"]
         showSlides(1, 0);
 
+        //Changes the image when the < or > button is pressed
         function plusSlides(n, no) {
             showSlides(slideIndex[no] += n, no);
         }
 
         function showSlides(n, no) {
             var i;
-            var x = document.getElementsByClassName(slideId[no]);
-            if (n > x.length) { slideIndex[no] = 1 }
-            if (n < 1) { slideIndex[no] = x.length }
-            for (i = 0; i < x.length; i++) {
-                x[i].style.display = "none";
+            var x = document.getElementsByClassName(slideId[no]); //get the current slider
+            if (n > x.length) {
+                slideIndex[no] = 1 
             }
-            x[slideIndex[no] - 1].style.display = "block";
+            if (n < 1) {
+                slideIndex[no] = x.length
+            }
+            for (i = 0; i < x.length; i++) {
+                x[i].style.display = "none"; //hide the images when they are not active
+            }
+            x[slideIndex[no] - 1].style.display = "block"; //show the images when they are not active
         }
     </script>
     <script src="JS/openingHours.js"></script>
-
 </body>
-
 </html>
