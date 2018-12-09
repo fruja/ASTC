@@ -21,7 +21,8 @@ function sendReq(url, callbackFunction) {
 function redeemVoucher() {
 
     //Tell the user the success or error message
-    var text = document.getElementById("succesInfo");
+    var text = document.getElementById("voucherInfo");
+    var redeemBtn = document.getElementById("redeem");
     //Finds the current ID of the URL
     var pageURL = window.location.href;
     var CurrentID = pageURL.substr(pageURL.lastIndexOf('/') + 20);
@@ -37,9 +38,25 @@ function redeemVoucher() {
     xhr.onload = function () {
         if (xhr.readyState == 4 && xhr.status == "200") {
             console.log("Success")
+            text.classList.add("voucherSuccess");
             text.innerHTML = "Success";
+            redeemBtn.classList.add("voucherBtnSuccess");
+
+            setInterval(1000)
+            var counter = 15;
+            setInterval(function(){
+            text.innerHTML = "Voucher has been used and will expire in: " + "<b>" + counter + "</b>";
+            counter--
+            if (counter === 0) {
+            window.location.href = "./user.html";
+             }
+            }, 1000);
         } else {
+            text.classList.add("voucherError");
+
             text.innerHTML = "I'm affraid you can't afford this item";
+            redeemBtn.classList.add("voucherBtnError");
+
         }
     }
     xhr.send(json);
@@ -74,6 +91,7 @@ sendReq(`http://localhost:55825/Api/Vouchers/${CurrentID}`, function processResp
 
     var validUntil = document.createElement('p');
     validUntil.textContent = "Valid until: " + data.VoucherEnd;
+    
 
     singleVoucherImg.appendChild(image);
     singleVoucher.appendChild(voucherTitle);

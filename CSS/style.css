@@ -166,8 +166,27 @@ button {
     width: 100%;
 }
 
-.redeem {
+#redeem {
     width: 100%;
+    cursor: pointer;
+}
+
+.voucherSuccess {
+    color: lightgreen;
+}
+
+.voucherError {
+    color: red;
+}
+
+.voucherBtnSuccess {
+    color: white;
+    background-color: Green;
+}
+
+.voucherBtnError {
+    color: white;
+    background-color: red;
 }
 
 .goBackContainer {
