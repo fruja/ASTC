@@ -50,6 +50,23 @@ sendReq(`http://localhost:55825/Api/Customers/${CurrentID}`, function processRes
     singleUser.appendChild(UserName);
     singleUser.appendChild(Points);
 });
+// DELETE USER
+function deleteUser() {
+
+    // Delete a user
+
+var xhr = new XMLHttpRequest();
+xhr.open("DELETE",`http://localhost:55825/Api/Customers/${CurrentID}`, true);
+xhr.onload = function () {
+	if (xhr.readyState == 4 && xhr.status == "200") {
+        console.log("Deleted");
+	} else {
+        console.log("Not Deleted");
+	}
+}
+xhr.send(null);
+        
+}
 
 //GET all vouchers
 sendReq(`http://localhost:55825/Api/Vouchers/`, function processResponse(response) {
@@ -102,7 +119,7 @@ sendReq(`http://localhost:55825/Api/Vouchers/`, function processResponse(respons
             var seconds = Math.floor((t % (1000 * 60)) / 1000);
 
             //adds the countdown to the 'p' tag
-            validUntiltext.innerHTML = days + "d " + hours + "h " + minutes + "m " + seconds + "s "
+            validUntiltext.innerHTML = "Voucher expires in: " + days + "d " + hours + "h " + minutes + "m " + seconds + "s "
             validUntiltext.setAttribute('id', 'valid')
 
             //change the conutdown to "EXPIRED" when the voucher expires

@@ -37,15 +37,13 @@ function redeemVoucher() {
     xhr.setRequestHeader('Content-type', 'application/json; charset=utf-8');
     xhr.onload = function () {
         if (xhr.readyState == 4 && xhr.status == "200") {
-            console.log("Success")
             text.classList.add("voucherSuccess");
-            text.innerHTML = "Success";
             redeemBtn.classList.add("voucherBtnSuccess");
 
             setInterval(1000)
             var counter = 15;
             setInterval(function(){
-            text.innerHTML = "Voucher has been used and will expire in: " + "<b>" + counter + "</b>";
+            redeemBtn.textContent = "Voucher will expire in: " + counter + " seconds";
             counter--
             if (counter === 0) {
             window.location.href = "./user.html";
@@ -89,14 +87,35 @@ sendReq(`http://localhost:55825/Api/Vouchers/${CurrentID}`, function processResp
     var voucherPoints = document.createElement('p');
     voucherPoints.textContent = "Points: " + data.VoucherCredit + "p";
 
-    var validUntil = document.createElement('p');
-    validUntil.textContent = "Valid until: " + data.VoucherEnd;
+        //makes a new 'p' tag for the expiration on a voucher
+        var validUntiltext = document.createElement('p');
+
+        //Countdown to when the voucher expires
+        var deadline = new Date(data.VoucherEnd).getTime();
+        var x = setInterval(function () {
+            var now = new Date().getTime();
+            var t = deadline - now;
+            var days = Math.floor(t / (1000 * 60 * 60 * 24));
+            var hours = Math.floor((t % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            var minutes = Math.floor((t % (1000 * 60 * 60)) / (1000 * 60));
+            var seconds = Math.floor((t % (1000 * 60)) / 1000);
+
+            //adds the countdown to the 'p' tag
+            validUntiltext.innerHTML = "Voucher expires in: " + days + "d " + hours + "h " + minutes + "m " + seconds + "s "
+            validUntiltext.setAttribute('id', 'valid')
+
+            //change the conutdown to "EXPIRED" when the voucher expires
+            if (t < 0) {
+                clearInterval(x);
+                document.getElementById("valid").innerHTML = "EXPIRED";
+            }
+        }, 1000); //update the time every second
     
 
     singleVoucherImg.appendChild(image);
     singleVoucher.appendChild(voucherTitle);
     singleVoucher.appendChild(voucherDescription);
     singleVoucher.appendChild(voucherPoints);
-    singleVoucher.appendChild(validUntil);
+    singleVoucher.appendChild(validUntiltext);
 });
 

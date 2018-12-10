@@ -158,8 +158,10 @@ button {
     box-sizing: border-box;
     background-color: white;
     color: blueviolet;
-    border-radius: 25px;
+    border-radius: 5px;
     text-align: center;
+    border-style: none;
+    cursor: pointer;
 }
 
 .signUpLoginBtn {
