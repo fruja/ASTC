@@ -67,6 +67,9 @@ function deleteUser() {
     xhr.onload = function () {
         if (xhr.readyState == 4 && xhr.status == "200") {
             console.log("Deleted");
+            sessionStorage.removeItem('UserID');
+            window.location.href = "./index.html";
+
         } else {
             console.log("Not Deleted");
         }
