@@ -2,10 +2,10 @@
 <html>
 
 <head>
-    <title>User</title>
+    <title>Update User</title>
 
     <meta charset="utf-8">
-    <meta name="description" content="On the personal user page you can see your points and vouchers.">
+    <meta name="description" content="Update user information">
     <meta name="author" content="PWE_Group8">
 
     <!-- Sets the logo in the browser tab -->
@@ -24,7 +24,7 @@
 
     <!-- JS import -->
     <script src="JS/navbar.js"></script>
-    <script src="JS/reqUsers.js"></script>
+    <script src="JS/updateCustomer.js"></script>
 </head>
 
 <body>
@@ -33,7 +33,7 @@
         <a href="index.html"><img src="./img/astc_logo_white.png" alt="ASTS_logo" style="height:17px;border:0;"></a>
         <a href="index.html">Home</a>
         <a href="map.html">Map</a>
-        <a href="shops.html" class="active">Shops</a>
+        <a href="shops.html">Shops</a>
         <a href="offers.html">Offers</a>
         <a href="events.html">Events</a>
         <a href="user.html" class="userIcon">
@@ -44,22 +44,35 @@
         </a>
     </div>
 
-    <!-- User page -->
-    <div style="padding:16px">
-        <!-- Welcome user text and barcode -->
-        <div id="singleUser"></div>
-        <div id="singleUserBarcode"><img src="./img/barcode.png" alt="barcode"></div>
-
-        <!-- Log out button -->
-        <button onclick="goToUpdate()">Update user</button>
-        <button onclick="deleteUser()">Delete user</button>
-        <button onclick="return logOut()">Logout</button>
-
-        <p id="demo"></p>
-
-        <!-- Vouchers -->
-        <h2>Vouchers</h2>
-        <section id="singleUserVouchers" class="listContainer"></section>
+    <!-- Title bar with go back button -->
+    <button class="goBackButton" onclick="goBack()"> Go Back</button>
+    <div class="goBackContainer">
+        <p>Update user</p>
     </div>
+
+    <!-- Update fields -->
+    <div style="padding:16px">
+        <div id="updateUser"></div>
+
+        <h2>Update your information</h2>
+        <p id="validationInformation"></p> <!-- Is only visible if the user left any input fielsd empty -->
+
+        <!-- Update form -->
+        <form id="updateForm">
+            <input id="fname" placeholder="First name" type="text"/>
+            <input id="lname" placeholder="Last name" type="text"/>
+            <input id="email" placeholder="Email" type="email"/>
+            <input id="pwd" placeholder="Password" type="password"/>
+        </form>
+        
+        <button class="signUpLoginBtn" type="submit" onclick="return updateUser()">Update</button>
+    </div>
+
+    <script>
+        //Go back to  the previous page
+        function goBack() {
+            window.location.href = "./user.html";
+        }
+    </script>
 </body>
 </html>

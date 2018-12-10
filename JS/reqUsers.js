@@ -9,6 +9,7 @@ function logOut() {
     window.location.href = "./index.html";
 }
 
+
 //Check if the URL you are trying to get is OK
 function sendReq(url, callbackFunction) {
     var xmlhttp
@@ -50,22 +51,28 @@ sendReq(`http://localhost:55825/Api/Customers/${CurrentID}`, function processRes
     singleUser.appendChild(UserName);
     singleUser.appendChild(Points);
 });
+
+function goToUpdate () {
+    window.location.href = "./updateUser.html";
+}
+
+
 // DELETE USER
 function deleteUser() {
 
     // Delete a user
 
-var xhr = new XMLHttpRequest();
-xhr.open("DELETE",`http://localhost:55825/Api/Customers/${CurrentID}`, true);
-xhr.onload = function () {
-	if (xhr.readyState == 4 && xhr.status == "200") {
-        console.log("Deleted");
-	} else {
-        console.log("Not Deleted");
-	}
-}
-xhr.send(null);
-        
+    var xhr = new XMLHttpRequest();
+    xhr.open("DELETE", `http://localhost:55825/Api/Customers/${CurrentID}`, true);
+    xhr.onload = function () {
+        if (xhr.readyState == 4 && xhr.status == "200") {
+            console.log("Deleted");
+        } else {
+            console.log("Not Deleted");
+        }
+    }
+    xhr.send(null);
+
 }
 
 //GET all vouchers
