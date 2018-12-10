@@ -48,11 +48,11 @@ sendReq("http://localhost:55825/Api/Events", function processResponse(response) 
 
         //makes a new 'p' tag for the start time of the event
         var eventStart = document.createElement('p');
-        eventStart.textContent = "Event start: " + dateConvert(new Date(events.EventStart), "DD-MMM-YYYY");
+        eventStart.textContent = "Event start: " + dateConvert(new Date(events.EventStart), "DD-MMM-YYYY HH:MM");
 
         //makes a new 'p' tag for the end time of the event
         var eventEnd = document.createElement('p');
-        eventEnd.textContent = "Event end: " + dateConvert(new Date(events.EventEnd), "DD-MMM-YYYY");
+        eventEnd.textContent = "Event end: " + dateConvert(new Date(events.EventEnd), "DD-MMM-YYYY HH:MM");
 
         //adds the 'a' tag to the 'eventList' div
         eventList.appendChild(card);
@@ -90,10 +90,10 @@ sendReq(`http://localhost:55825/Api/Events/${CurrentID}`, function processRespon
     eventDescription.textContent = data.EventDesc;
 
     var eventStart = document.createElement('p');
-    eventStart.textContent = "Event starts at: " + dateConvert(new Date(data.EventStart), "DD-MMM-YYYY");
+    eventStart.textContent = "Event starts at: " + dateConvert(new Date(data.EventStart), "DD-MMM-YYYY HH:MM");
 
     var eventEnd = document.createElement('p');
-    eventEnd.textContent = "Event ends at: " + dateConvert(new Date(data.EventEnd), "DD-MMM-YYYY");
+    eventEnd.textContent = "Event ends at: " + dateConvert(new Date(data.EventEnd), "DD-MMM-YYYY HH:MM");
 
     singleEventImg.appendChild(image);
     singleEvent.appendChild(eventTitle);
@@ -102,31 +102,26 @@ sendReq(`http://localhost:55825/Api/Events/${CurrentID}`, function processRespon
     singleEvent.appendChild(eventEnd);
 });
 
-//Formats the SQL DATETIME to a much more readable format (JS string)
-function dateConvert(dateobj,format){
+//Formats the SQL DATETIME to a much more readable format
+function dateConvert(dateobj, format) {
     var year = dateobj.getFullYear();
-    var month= ("0" + (dateobj.getMonth()+1)).slice(-2);
+    var month = ("0" + (dateobj.getMonth() + 1)).slice(-2);
     var date = ("0" + dateobj.getDate()).slice(-2);
     var hours = ("0" + dateobj.getHours()).slice(-2);
     var minutes = ("0" + dateobj.getMinutes()).slice(-2);
     var seconds = ("0" + dateobj.getSeconds()).slice(-2);
     var day = dateobj.getDay();
-    var months = ["JAN","FEB","MAR","APR","MAY","JUN","JUL","AUG","SEP","OCT","NOV","DEC"];
-    var dates = ["SUN","MON","TUE","WED","THU","FRI","SAT"];
+    var months = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
+    var dates = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
     var converted_date = "";
-  
-    switch(format){
-      case "YYYY-MM-DD":
-        converted_date = year + "-" + month + "-" + date;
-        break;
-      case "YYYY-MMM-DD DDD":
-        converted_date = year + "-" + months[parseInt(month)-1] + "-" + date + " " + dates[parseInt(day)];
-        break;
 
-        case "DD-MMM-YYYY":
-        converted_date = date + " " + months[parseInt(month)-1] + " " + year + " kl. " + hours + ":" + minutes;
-        break;
+    switch (format) {
+        case "YYYY-MM-DD":
+            converted_date = year + "-" + month + "-" + date;
+            break;
+        case "DD-MMM-YYYY HH:MM":
+            converted_date = date + " " + months[parseInt(month) - 1] + " " + year + " kl. " + hours + ":" + minutes;
+            break;
     }
-  
     return converted_date;
-  }
+}

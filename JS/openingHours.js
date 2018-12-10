@@ -20,14 +20,14 @@ var checkTime = function () {
         minutes = "0" + minutes
     };
 
-    // open from 10 - 19 monday to saturday. Tell the user that it's open in that time space
-    if ((dayOfWeek == 0 || dayOfWeek == 1 || dayOfWeek == 2 || dayOfWeek == 3 || dayOfWeek == 4 || dayOfWeek == 5) && hour >= 10 && hour <= 19) {
+    // open from 10 - 19 monday to friday. Tell the user that it's open in that time space
+    if ((dayOfWeek == 0 || dayOfWeek == 1 || dayOfWeek == 2 || dayOfWeek == 3 || dayOfWeek == 4) && hour >= 10 && hour <= 19) {
         timeDiv.innerHTML = 'it\'s ' + today + ' ' + hour + ':' + minutes + ' - we\'re open!';
         timeDiv.className = 'open';
     }
 
-    // open from 10 - 17 sunday. Tell the user that it's open in that time space
-    else if ((dayOfWeek == 6) && hour >= 10 && hour <= 17) {
+    // open from 10 - 17 saturday and sunday. Tell the user that it's open in that time space
+    else if ((dayOfWeek == 5 || dayOfWeek == 6) && hour >= 10 && hour <= 17) {
         timeDiv.innerHTML = 'it\'s ' + today + ' ' + hour + ':' + minutes + ' - we\'re open!';
         timeDiv.className = 'open';
     }

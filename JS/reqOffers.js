@@ -52,7 +52,7 @@ sendReq("http://localhost:55825/Api/Offers", function processResponse(response) 
 
         //makes a new p' tag for the expiration of the offer
         var validUntil = document.createElement('p');
-        validUntil.textContent = "Valid until: " + offers.OfferEnd;
+        validUntil.textContent = "Valid until: " + dateConvert(new Date(offers.OfferEnd), "DD-MMM-YYYY HH:MM");
 
         //adds the 'a' tag to the 'offerList' div
         offerList.appendChild(card);
@@ -91,7 +91,7 @@ sendReq(`http://localhost:55825/Api/Offers/${CurrentID}`, function processRespon
     offerDescription.textContent = data.OfferDesc;
 
     var offerEnds = document.createElement('p');
-    offerEnds.textContent = "Valid until:" + data.OfferEnd;
+    offerEnds.textContent = "Valid until: " + dateConvert(new Date(data.OfferEnd), "DD-MMM-YYYY HH:MM");
 
     var shopName = document.createElement('p');
     shopName.textContent = "Shop: " + data.Shop.ShopName;
@@ -102,3 +102,27 @@ sendReq(`http://localhost:55825/Api/Offers/${CurrentID}`, function processRespon
     singleOffer.appendChild(offerEnds);
     singleOffer.appendChild(shopName);
 });
+
+//Formats the SQL DATETIME to a much more readable format
+function dateConvert(dateobj, format) {
+    var year = dateobj.getFullYear();
+    var month = ("0" + (dateobj.getMonth() + 1)).slice(-2);
+    var date = ("0" + dateobj.getDate()).slice(-2);
+    var hours = ("0" + dateobj.getHours()).slice(-2);
+    var minutes = ("0" + dateobj.getMinutes()).slice(-2);
+    var seconds = ("0" + dateobj.getSeconds()).slice(-2);
+    var day = dateobj.getDay();
+    var months = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
+    var dates = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
+    var converted_date = "";
+
+    switch (format) {
+        case "YYYY-MM-DD":
+            converted_date = year + "-" + month + "-" + date;
+            break;
+        case "DD-MMM-YYYY HH:MM":
+            converted_date = date + " " + months[parseInt(month) - 1] + " " + year + " kl. " + hours + ":" + minutes;
+            break;
+    }
+    return converted_date;
+}
