@@ -92,8 +92,8 @@ sendReq(`http://localhost:55825/Api/Offers/Shops/${CurrentID}`, function process
 
 	data.forEach(offers => {
 		//makes a header that tells which shop the offers are from
-		var header = document.createElement('h3');
-		header.textContent = "Offers from " + offers.Shop.ShopName + ":";
+		//var header = document.createElement('h3');
+		//header.textContent = "Offers from " + offers.Shop.ShopName + ":";
 
 		//makes a new 'a' tag for every offer (like this: <a class="card" href="#"> </a>)
 		card = document.createElement('a');
@@ -121,7 +121,7 @@ sendReq(`http://localhost:55825/Api/Offers/Shops/${CurrentID}`, function process
 		validUntil.textContent = "Valid until: " + dateConvert(new Date(offers.OfferEnd), "DD-MMM-YYYY HH:MM");
 
 		//adds the header and the card to the 'offerFromShop' div
-		offerFromShop.appendChild(header);
+		//offerFromShop.appendChild(header);
 		offerFromShop.appendChild(card);
 
 		//adds the information about the offer in to the 'a' tag
