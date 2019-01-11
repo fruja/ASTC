@@ -45,7 +45,7 @@ sendReq(`http://localhost:55825/Api/Customers/${CurrentID}`, function processRes
     UserName.textContent = 'Hey ' + data.Fname + '!'; //Welcome the user
 
     var Points = document.createElement('p');
-    Points.setAttribute('class', 'userPoints');
+    Points.setAttribute('class', 'userPoints animated zoomIn');
     Points.textContent = data.Credit + ' Points';
 
     singleUser.appendChild(UserName);
