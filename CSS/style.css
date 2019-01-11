@@ -237,6 +237,26 @@ button {
     font-size: 20px;
 }
 
+.readMoreButton {
+    border-radius: 4px;
+    margin: 0;
+    padding: 7px;
+    float: right;
+    width: 35%;
+    cursor: pointer;
+    color: #000;
+}
+
+.readMoreButton:hover {
+    background-color:rgb(206, 206, 206);
+}
+
+.readMoreButton::after {
+    content: " \f138";
+    font-family: FontAwesome;
+    font-size: 14px;
+}
+
 /* Standart img styling */
 .image {
     width: 100%;

@@ -64,7 +64,7 @@ function redeemVoucher() {
 var pageURL = window.location.href;
 var CurrentID = pageURL.substr(pageURL.lastIndexOf('/') + 20);
 
-//GET single event by the current ID
+//GET single voucher by the current ID
 sendReq(`http://localhost:55825/Api/Vouchers/${CurrentID}`, function processResponse(response) {
     var singleVoucher = document.getElementById("singleVoucher");
     singleVoucher.innerHTML = "";

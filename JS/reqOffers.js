@@ -57,12 +57,18 @@ sendReq("http://localhost:55825/Api/Offers", function processResponse(response) 
         //adds the 'a' tag to the 'offerList' div
         offerList.appendChild(card);
 
+            //read more button
+    var readMore = document.createElement('button');
+    readMore.textContent = "Read more ";
+    readMore.setAttribute('class', 'readMoreButton');
+
         //adds the information about the offer in to the 'a' tag
         card.appendChild(offerLogoContainer);
         offerLogoContainer.appendChild(offerLogo);
         card.appendChild(image);
         card.appendChild(offerTitle);
         card.appendChild(validUntil);
+        card.appendChild(readMore);
     });
 });
 
@@ -96,11 +102,14 @@ sendReq(`http://localhost:55825/Api/Offers/${CurrentID}`, function processRespon
     var shopName = document.createElement('p');
     shopName.textContent = "Shop: " + data.Shop.ShopName;
 
+
+
     singleOfferImg.appendChild(image);
     singleOffer.appendChild(offerTitle);
     singleOffer.appendChild(offerDescription);
     singleOffer.appendChild(offerEnds);
     singleOffer.appendChild(shopName);
+
 });
 
 //Formats the SQL DATETIME to a much more readable format

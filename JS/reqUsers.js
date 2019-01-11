@@ -139,6 +139,11 @@ sendReq(`http://localhost:55825/Api/Vouchers/`, function processResponse(respons
             }
         }, 1000); //update the time every second
 
+                //read more button
+                var readMore = document.createElement('button');
+                readMore.textContent = "Read more ";
+                readMore.setAttribute('class', 'readMoreButton');
+
         listLogoContainer.appendChild(voucherLogo); //adds the logo to the logo container
         //adds the information about the voucher in to the 'a' tag
         card.appendChild(listLogoContainer);
@@ -147,5 +152,6 @@ sendReq(`http://localhost:55825/Api/Vouchers/`, function processResponse(respons
         card.appendChild(voucherDescription);
         card.appendChild(validUntiltext);
         voucherList.appendChild(card); //adds the cards to the list of vouchers
+        card.appendChild(readMore);
     });
 });

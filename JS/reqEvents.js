@@ -54,6 +54,12 @@ sendReq("http://localhost:55825/Api/Events", function processResponse(response) 
         var eventEnd = document.createElement('p');
         eventEnd.textContent = "Event end: " + dateConvert(new Date(events.EventEnd), "DD-MMM-YYYY HH:MM");
 
+        //read more button
+        var readMore = document.createElement('button');
+        readMore.textContent = "Read more ";
+        readMore.setAttribute('class', 'readMoreButton');
+
+
         //adds the 'a' tag to the 'eventList' div
         eventList.appendChild(card);
 
@@ -62,6 +68,7 @@ sendReq("http://localhost:55825/Api/Events", function processResponse(response) 
         card.appendChild(eventTitle);
         card.appendChild(eventStart);
         card.appendChild(eventEnd);
+        card.appendChild(readMore);
     });
 });
 
