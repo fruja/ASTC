@@ -90,6 +90,10 @@ sendReq(`http://localhost:55825/Api/Offers/Shops/${CurrentID}`, function process
 
 	var data = JSON.parse(response);
 
+	var offersFromShopHeader = document.createElement('h2');
+	offersFromShopHeader.textContent = "Offers from shop:";
+	offerFromShop.appendChild(offersFromShopHeader);
+
 	data.forEach(offers => {
 		//makes a new 'a' tag for every offer (like this: <a class="card" href="#"> </a>)
 		card = document.createElement('a');
