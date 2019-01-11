@@ -78,7 +78,7 @@ sendReq(`http://localhost:55825/Api/Vouchers/${CurrentID}`, function processResp
     image.setAttribute('class', 'image');
     image.setAttribute('alt', 'Image of: ' + data.VoucherTitle);
 
-    var voucherTitle = document.createElement('h3');
+    var voucherTitle = document.createElement('h1');
     voucherTitle.textContent = data.VoucherTitle;
 
     var voucherDescription = document.createElement('p');

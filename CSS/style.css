@@ -11,6 +11,9 @@ body {
     background-image: linear-gradient(to bottom right, #0080FF, purple); /* Standard syntax (must be last) */
 }
 
+h2 {
+    font-size: 1.17em;
+}
 
 /* NAVIGATIONBAR styling */
 /* Add a background color to the top navigation */
@@ -298,6 +301,9 @@ img {vertical-align: middle;}
     .mobileImg {
         display:block;
         visibility: visible;
+    }
+    h1 {
+        font-size: 1.5em;
     }
 }
 

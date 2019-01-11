@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>User</title>
+    <title>Personal page</title>
 
     <meta charset="utf-8">
     <meta name="description" content="On the personal user page you can see your points and vouchers.">
@@ -37,15 +37,17 @@
         <a href="offers.html">Offers</a>
         <a href="events.html">Events</a>
         <a href="user.html" class="userIcon">
-            <i class="fas fa-user"></i>
+            <i class="fas fa-user" alt="user icon"></i>
         </a>
         <a href="javascript:void(0);" class="icon" onclick="navbar()">
-            <i class="fa fa-bars"></i>
+            <i class="fa fa-bars" alt="mobile menu icon"></i>
         </a>
     </div>
 
     <!-- User page -->
     <div style="padding:16px">
+        <h1>Profile page</h1>
+
         <!-- Welcome user text and barcode -->
         <div id="singleUser"></div>
         <div id="singleUserBarcode"><img src="./img/barcode.png" alt="barcode"></div>
@@ -54,8 +56,6 @@
         <button onclick="goToUpdate()">Update user</button>
         <button onclick="deleteUser()">Delete user</button>
         <button onclick="return logOut()">Logout</button>
-
-        <p id="demo"></p>
 
         <!-- Vouchers -->
         <h2>Vouchers</h2>

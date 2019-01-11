@@ -83,7 +83,7 @@ sendReq(`http://localhost:55825/Api/Events/${CurrentID}`, function processRespon
     image.setAttribute('class', 'image');
     image.setAttribute('alt', 'Image of: ' + data.EventTitle);
 
-    var eventTitle = document.createElement('h3');
+    var eventTitle = document.createElement('h1');
     eventTitle.textContent = data.EventTitle;
 
     var eventDescription = document.createElement('p');

@@ -84,7 +84,7 @@ sendReq(`http://localhost:55825/Api/Offers/${CurrentID}`, function processRespon
     image.setAttribute('class', 'image');
     image.setAttribute('alt', 'Image of: ' + data.OfferTitle);
 
-    var offerTitle = document.createElement('h3');
+    var offerTitle = document.createElement('h1');
     offerTitle.textContent = data.OfferTitle;
 
     var offerDescription = document.createElement('p');

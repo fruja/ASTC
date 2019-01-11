@@ -64,7 +64,7 @@ sendReq(`http://localhost:55825/Api/Shops/${CurrentID}`, function processRespons
 	image.setAttribute('class', 'image');
 	image.setAttribute('alt', 'Image of: ' + data.ShopName + ' logo');
 
-	var shopTitle = document.createElement('h3');
+	var shopTitle = document.createElement('h1');
 	shopTitle.textContent = data.ShopName;
 
 	var shopDescription = document.createElement('p');
@@ -91,10 +91,6 @@ sendReq(`http://localhost:55825/Api/Offers/Shops/${CurrentID}`, function process
 	var data = JSON.parse(response);
 
 	data.forEach(offers => {
-		//makes a header that tells which shop the offers are from
-		var header = document.createElement('h3');
-		header.textContent = "Offers from " + offers.Shop.ShopName + ":";
-
 		//makes a new 'a' tag for every offer (like this: <a class="card" href="#"> </a>)
 		card = document.createElement('a');
 		card.setAttribute('class', 'card');
@@ -121,7 +117,6 @@ sendReq(`http://localhost:55825/Api/Offers/Shops/${CurrentID}`, function process
 		validUntil.textContent = "Valid until: " + offers.OfferEnd;
 
 		//adds the header and the card to the 'offerFromShop' div
-		offerFromShop.appendChild(header);
 		offerFromShop.appendChild(card);
 
 		//adds the information about the offer in to the 'a' tag
