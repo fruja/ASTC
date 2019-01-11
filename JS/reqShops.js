@@ -114,7 +114,7 @@ sendReq(`http://localhost:55825/Api/Offers/Shops/${CurrentID}`, function process
 
 		//makes a new 'p' tag for the expiration date of the offer
 		var validUntil = document.createElement('p');
-		validUntil.textContent = "Valid until: " + offers.OfferEnd;
+		validUntil.textContent = "Valid until: " + dateConvert(new Date(offers.OfferEnd), "DD-MMM-YYYY HH:MM");
 
 		//adds the header and the card to the 'offerFromShop' div
 		offerFromShop.appendChild(card);
@@ -164,4 +164,28 @@ function removeClass(element, name) {
 		}
 	}
 	element.className = arr1.join(" ");
+}
+
+//Formats the SQL DATETIME to a much more readable format
+function dateConvert(dateobj, format) {
+    var year = dateobj.getFullYear();
+    var month = ("0" + (dateobj.getMonth() + 1)).slice(-2);
+    var date = ("0" + dateobj.getDate()).slice(-2);
+    var hours = ("0" + dateobj.getHours()).slice(-2);
+    var minutes = ("0" + dateobj.getMinutes()).slice(-2);
+    var seconds = ("0" + dateobj.getSeconds()).slice(-2);
+    var day = dateobj.getDay();
+    var months = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
+    var dates = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
+    var converted_date = "";
+
+    switch (format) {
+        case "YYYY-MM-DD":
+            converted_date = year + "-" + month + "-" + date;
+            break;
+        case "DD-MMM-YYYY HH:MM":
+            converted_date = date + " " + months[parseInt(month) - 1] + " " + year + " kl. " + hours + ":" + minutes;
+            break;
+    }
+    return converted_date;
 }
