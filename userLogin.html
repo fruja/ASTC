@@ -10,6 +10,12 @@
 
     <!-- Sets the logo in the browser tab -->
     <link rel="icon" type="image/jpg" href="img/astc_logo_s.jpg">
+    
+    <!-- Import the manifest file -->
+    <link rel="manifest" href="./manifest.webmanifest">
+
+    <!-- Theming the browser's address bar to match your brand's colors provides a more immersive user experience. -->
+    <meta name="theme-color" content="#0080FF"/>
 
     <!-- CSS import -->
     <link rel="stylesheet" href="css/style.css">
@@ -71,6 +77,10 @@
     
     </div>
 
+    <script>
+        if('serviceWorker' in navigator) {
+          navigator.serviceWorker.register('./sw.js');
+        };
+    </script>
 </body>
-
 </html>
