@@ -27,10 +27,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- User icon library -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
-
-    <!-- JS import -->
-    <script src="JS/navbar.js"></script>
-    <script src="JS/reqEvents.js"></script>
 </head>
 
 <body>
@@ -122,26 +118,29 @@
         </div>
     </div>
 
+    <script src="JS/openingHours.js"></script>
+    <script src="JS/navbar.js"></script>
+    <script src="JS/reqEvents.js"></script>
+
     <!-- Script for the slider -->
     <script>
         var slideIndex = 0;
-        showSlides();
+        showSlides(); //display the first image
 
         function showSlides() {
             var i;
             var slides = document.getElementsByClassName("imgSlider");
             for (i = 0; i < slides.length; i++) {
-                slides[i].style.display = "none";
+                slides[i].style.display = "none"; //hide the elements with className "imgSlider"
             }
-            slideIndex++;
-            if (slideIndex > slides.length) {
+            slideIndex++; //increase the slideIndex to display the next pictutre
+            if (slideIndex > slides.length) { //if the slideIndex is higher than the number of elements, set it to 1 (first picture)
                 slideIndex = 1
             }
-            slides[slideIndex - 1].style.display = "block";
+            slides[slideIndex - 1].style.display = "block"; //display the image with the given slideIndex
             setTimeout(showSlides, 4000); // Change image every 4 seconds
         }
     </script>
-    <script src="JS/openingHours.js"></script>
 
     <script>
         //Register service worker

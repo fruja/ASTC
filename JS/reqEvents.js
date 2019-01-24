@@ -112,14 +112,11 @@ sendReq(`http://localhost:55825/Api/Events/${CurrentID}`, function processRespon
 //Formats the SQL DATETIME to a much more readable format
 function dateConvert(dateobj, format) {
     var year = dateobj.getFullYear();
-    var month = ("0" + (dateobj.getMonth() + 1)).slice(-2);
+    var month = ("0" + (dateobj.getMonth() + 1)).slice(-2); // +1 because the months go from 0 to 11. Add 0 for showing 01 instead of 1. Use slice(-2) at the end to only get the last two caracters.
     var date = ("0" + dateobj.getDate()).slice(-2);
     var hours = ("0" + dateobj.getHours()).slice(-2);
     var minutes = ("0" + dateobj.getMinutes()).slice(-2);
-    var seconds = ("0" + dateobj.getSeconds()).slice(-2);
-    var day = dateobj.getDay();
     var months = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
-    var dates = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
     var converted_date = "";
 
     switch (format) {

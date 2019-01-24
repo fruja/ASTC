@@ -56,12 +56,8 @@ function goToUpdate () {
     window.location.href = "./updateUser.html";
 }
 
-
 // DELETE USER
 function deleteUser() {
-
-    // Delete a user
-
     var xhr = new XMLHttpRequest();
     xhr.open("DELETE", `http://localhost:55825/Api/Customers/${CurrentID}`, true);
     xhr.onload = function () {
@@ -69,13 +65,11 @@ function deleteUser() {
             console.log("Deleted");
             sessionStorage.removeItem('UserID');
             window.location.href = "./index.html";
-
         } else {
             console.log("Not Deleted");
         }
     }
     xhr.send(null);
-
 }
 
 //GET all vouchers
@@ -139,10 +133,10 @@ sendReq(`http://localhost:55825/Api/Vouchers/`, function processResponse(respons
             }
         }, 1000); //update the time every second
 
-                //read more button
-                var readMore = document.createElement('button');
-                readMore.textContent = "Read more ";
-                readMore.setAttribute('class', 'readMoreButton');
+        //read more button
+        var readMore = document.createElement('button');
+        readMore.textContent = "Read more ";
+        readMore.setAttribute('class', 'readMoreButton');
 
         listLogoContainer.appendChild(voucherLogo); //adds the logo to the logo container
         //adds the information about the voucher in to the 'a' tag
@@ -151,7 +145,7 @@ sendReq(`http://localhost:55825/Api/Vouchers/`, function processResponse(respons
         card.appendChild(voucherTitle);
         card.appendChild(voucherDescription);
         card.appendChild(validUntiltext);
-        voucherList.appendChild(card); //adds the cards to the list of vouchers
         card.appendChild(readMore);
+        voucherList.appendChild(card); //adds the cards to the list of vouchers
     });
 });

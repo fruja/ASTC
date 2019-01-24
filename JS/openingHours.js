@@ -9,7 +9,7 @@ weekday[5] = "Saturday";
 weekday[6] = "Sunday";
 
 var checkTime = function () {
-    var today = weekday[now.getDay()-1]; // -1 because getDay starts with sunday, and we want monday to be the first day
+    var today = weekday[now.getDay()-1]; // -1 to get the correct day
     var timeDiv = document.getElementById('timeDiv');
     var dayOfWeek = now.getDay();
     var hour = now.getHours();

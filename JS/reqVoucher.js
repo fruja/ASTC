@@ -19,11 +19,10 @@ function sendReq(url, callbackFunction) {
 }
 
 function redeemVoucher() {
+    var text = document.getElementById("voucherInfo"); //The voucherInfo tells the user if he can't affort it
+    var redeemBtn = document.getElementById("redeem"); //The redeem button
 
-    //Tell the user the success or error message
-    var text = document.getElementById("voucherInfo");
-    var redeemBtn = document.getElementById("redeem");
-    //Finds the current ID of the URL
+    //Finds the current ID of the URL (the voucherID)
     var pageURL = window.location.href;
     var CurrentID = pageURL.substr(pageURL.lastIndexOf('/') + 20);
 
@@ -31,30 +30,25 @@ function redeemVoucher() {
     var userID = sessionStorage.getItem("UserID");
     var voucherID = CurrentID;
 
-    var json = JSON.stringify(userID + voucherID);
+    var json = JSON.stringify(userID + voucherID); //The information we want to send to the backend
     var xhr = new XMLHttpRequest();
     xhr.open("POST", `http://localhost:55825/Api/Vouchers/RedeemVoucher/${userID}/${voucherID}`, true);
-    xhr.setRequestHeader('Content-type', 'application/json; charset=utf-8');
     xhr.onload = function () {
         if (xhr.readyState == 4 && xhr.status == "200") {
-            text.classList.add("voucherSuccess");
-            redeemBtn.classList.add("voucherBtnSuccess");
+            redeemBtn.classList.add("voucherBtnSuccess"); //makes the button green
 
-            setInterval(1000)
-            var counter = 15;
-            setInterval(function(){
-            redeemBtn.textContent = "Voucher will expire in: " + counter + " seconds";
-            counter--
-            if (counter === 0) {
-            window.location.href = "./user.html";
-             }
-            }, 1000);
+            var counter = 15; //count down from 15 seconds
+            setInterval(function () {
+                redeemBtn.textContent = "Voucher will expire in: " + counter + " seconds"; //changes the text on the button
+                counter-- //decrease the number
+                if (counter === 0) {
+                    window.location.href = "./user.html"; //return to user page when the counter reaches 0
+                }
+            }, 1000); //execute the function every second
         } else {
-            text.classList.add("voucherError");
-
-            text.innerHTML = "I'm affraid you can't afford this item";
-            redeemBtn.classList.add("voucherBtnError");
-
+            redeemBtn.classList.add("voucherBtnError"); //makes the button red
+            text.innerHTML = "I'm affraid you can't afford this item"; //error text under button
+            text.classList.add("voucherError"); //makes the error text red
         }
     }
     xhr.send(json);
@@ -87,30 +81,29 @@ sendReq(`http://localhost:55825/Api/Vouchers/${CurrentID}`, function processResp
     var voucherPoints = document.createElement('p');
     voucherPoints.textContent = "Points: " + data.VoucherCredit + "p";
 
-        //makes a new 'p' tag for the expiration on a voucher
-        var validUntiltext = document.createElement('p');
+    //makes a new 'p' tag for the expiration on a voucher
+    var validUntiltext = document.createElement('p');
 
-        //Countdown to when the voucher expires
-        var deadline = new Date(data.VoucherEnd).getTime();
-        var x = setInterval(function () {
-            var now = new Date().getTime();
-            var t = deadline - now;
-            var days = Math.floor(t / (1000 * 60 * 60 * 24));
-            var hours = Math.floor((t % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            var minutes = Math.floor((t % (1000 * 60 * 60)) / (1000 * 60));
-            var seconds = Math.floor((t % (1000 * 60)) / 1000);
+    //Countdown to when the voucher expires
+    var deadline = new Date(data.VoucherEnd).getTime(); //this gives us milliseconds from midnight 1 january 1970 until the voucher expires
+    var x = setInterval(function () {
+        var now = new Date().getTime(); //this gives us milliseconds since midnight 1 january 1970 (standard)
+        var t = deadline - now; //calculates how many milliseconds are between the two given times
+        var days = Math.floor(t / (1000 * 60 * 60 * 24)); //'t' divided by the number of milliseconds in a day (1000 x 60 seconds x 60 minutes x 24 hours)
+        var hours = Math.floor((t % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        var minutes = Math.floor((t % (1000 * 60 * 60)) / (1000 * 60));
+        var seconds = Math.floor((t % (1000 * 60)) / 1000);
 
-            //adds the countdown to the 'p' tag
-            validUntiltext.innerHTML = "Voucher expires in: " + days + "d " + hours + "h " + minutes + "m " + seconds + "s "
-            validUntiltext.setAttribute('id', 'valid')
+        //adds the countdown to the 'p' tag
+        validUntiltext.innerHTML = "Voucher expires in: " + days + "d " + hours + "h " + minutes + "m " + seconds + "s "
+        validUntiltext.setAttribute('id', 'valid') //adds id=valid on the p-element
 
-            //change the conutdown to "EXPIRED" when the voucher expires
-            if (t < 0) {
-                clearInterval(x);
-                document.getElementById("valid").innerHTML = "EXPIRED";
-            }
-        }, 1000); //update the time every second
-    
+        //change the conutdown to "EXPIRED" when the voucher expires
+        if (t < 0) {
+            clearInterval(x); //stops the interval
+            document.getElementById("valid").innerHTML = "EXPIRED"; //change the countdown to 'EXPIRED'
+        }
+    }, 1000); //update the time every second
 
     singleVoucherImg.appendChild(image);
     singleVoucher.appendChild(voucherTitle);

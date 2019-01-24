@@ -53,9 +53,20 @@ h2 {
     float: right;
 }
 
-/* 'i' tags (font awesome) inside the active class*/
-.active i {
-    size: 30px;
+/* the logo on the navigation bar */
+.logoImage {
+    height: 17px;
+    border: 0;
+}
+
+/* Display MENU after burger menu icon */
+.fa-bars::after {
+    content: "menu";
+    font-family: Arial, Helvetica, sans-serif;
+    text-transform: uppercase;
+    padding-left: 10px;
+    font-weight: 100;
+    font-size: 12px;
 }
 
 
@@ -80,35 +91,30 @@ h2 {
     font-size: 30px;
     font-weight: bold;
 }
+
 .userPoints {
     font-size: 30px;
     font-weight: bold;
 }
 
-.show {
-    display: block;
-}
-    
-.fa-bars::after {
-    content: "menu";
-    font-family: Arial, Helvetica, sans-serif;
-    text-transform: uppercase;
-    padding-left: 10px;
-    font-weight: 100;
-    font-size: 12px;
-}
+/* Animation zoomIn for User points  */
+.animated {
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+  }
 
-.logoImage {
-    height: 17px;
-    border: 0;
+.zoomIn {
+    -webkit-animation-name: zoomIn;
+    animation-name: zoomIn;
+  }
 
-}
+
 /* Styling of the cards of OFFER LIST, EVENT LIST, SHOP LIST, VOUCHER LIST */
 .listContainer {
     display: flex;
-    justify-content: flex-start;
-    align-content: flex-start;
-    flex-wrap: wrap;
+    flex-wrap: wrap; /* items will wrap onto multiple lines, from top to bottom. */
 }
 
 .card {
@@ -134,10 +140,12 @@ h2 {
     display: none;
 }
 
+/* Show category */
 .show {
     display: block;
 }
 
+/* category buttons */
 .btn {
     border: none;
     outline: none;
@@ -145,7 +153,6 @@ h2 {
     cursor: pointer;
 }
 
-/* Add a light grey background on mouse-over */
 .btn:hover {
     font-weight: bold;
     color: black;
@@ -184,13 +191,10 @@ button {
     width: 100%;
 }
 
+/* SINGLE VOUCHER styling */
 #redeem {
     width: 100%;
     cursor: pointer;
-}
-
-.voucherSuccess {
-    color: lightgreen;
 }
 
 .voucherError {
@@ -207,6 +211,7 @@ button {
     background-color: red;
 }
 
+/* The GO BACK container on top og the single pages */
 .goBackContainer {
     width: calc(100% - 10px);
     background: white;
@@ -237,6 +242,7 @@ button {
     font-size: 20px;
 }
 
+/* READ MORE button */
 .readMoreButton {
     border-radius: 4px;
     margin: 0;
@@ -264,7 +270,6 @@ button {
 
 /* Container with logo of the shop, on the offers and voucher list */
 .listLogoContainer {
-    z-index: 999;
     margin: 0 auto;
     width: 30%;
 }
@@ -279,7 +284,7 @@ button {
 
 /* Image slideshow */
 .imgSlider {display: none}
-img {vertical-align: middle;}
+img {vertical-align: middle;} /* The element is placed in the middle of the parent element */
 
 /* Slideshow container */
 .slideshow-container {
@@ -287,14 +292,6 @@ img {vertical-align: middle;}
   box-sizing: border-box
 }
 
-
-/* Animation zoomIn for User points  */
-.animated {
-    -webkit-animation-duration: 1s;
-    animation-duration: 1s;
-    -webkit-animation-fill-mode: both;
-    animation-fill-mode: both;
-  }
 
 
 @-webkit-keyframes zoomIn {
@@ -321,14 +318,11 @@ img {vertical-align: middle;}
     }
   }
   
-  .zoomIn {
-    -webkit-animation-name: zoomIn;
-    animation-name: zoomIn;
-  }
+  
 
 /* When the screen is less than 600 pixels wide: */
 @media screen and (max-width: 600px) {
-    /* When the screen is less than 600 pixels wide, hide all links. Show the link that contains should open and close the topnav (.icon) */
+    /* When the screen is less than 600 pixels wide, hide all links. Show the link that should open and close the topnav (.icon) */
     .topnav a:not(:first-child) {display: none;}
     .topnav a.icon {
         float: left;

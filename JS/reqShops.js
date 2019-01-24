@@ -132,12 +132,11 @@ sendReq(`http://localhost:55825/Api/Offers/Shops/${CurrentID}`, function process
 
 
 //Filter shops by category
-//Start by showing all shops
-filterSelection("all")
+filterSelection("all") //Start by showing all shops
 function filterSelection(c) {
 	var x, i;
-	x = document.getElementsByClassName("shopCard");
-	if (c == "all") c = "";
+	x = document.getElementsByClassName("shopCard"); //get all the cards
+	if (c == "all") c = ""; //Clear the filter, so that every shop is shown
 	// Add the "show" class (display:block) to the filtered elements, and remove the "show" class from the elements that are not selected
 	for (i = 0; i < x.length; i++) {
 		removeClass(x[i], "show");
@@ -148,11 +147,11 @@ function filterSelection(c) {
 // Show filtered elements
 function addClass(element, name) {
 	var i, arr1, arr2;
-	arr1 = element.className.split(" ");
-	arr2 = name.split(" ");
+	arr1 = element.className.split(" "); //Splits the string of class names into an array of substrings (e.g. shopCard,show)
+	arr2 = name.split(" "); //Split the string of name into an array of substrings (e.g. show)
 	for (i = 0; i < arr2.length; i++) {
-		if (arr1.indexOf(arr2[i]) == -1) {
-			element.className += " " + arr2[i];
+		if (arr1.indexOf(arr2[i]) == -1) { //indexOf() searches the array for an element and returns its position
+			element.className += " " + arr2[i]; //add a new class and keep the existing class
 		}
 	}
 }
@@ -160,11 +159,11 @@ function addClass(element, name) {
 // Hide elements that are not selected
 function removeClass(element, name) {
 	var i, arr1, arr2;
-	arr1 = element.className.split(" ");
-	arr2 = name.split(" ");
+	arr1 = element.className.split(" "); //Splits the string of class names into an array of substrings (e.g. shopCard,show)
+	arr2 = name.split(" "); //Split the string of name into an array of substrings (e.g. show)
 	for (i = 0; i < arr2.length; i++) {
-		while (arr1.indexOf(arr2[i]) > -1) {
-			arr1.splice(arr1.indexOf(arr2[i]), 1);
+		while (arr1.indexOf(arr2[i]) > -1) { //indexOf() searches the array for an element and returns its position
+			arr1.splice(arr1.indexOf(arr2[i]), 1); //at position arr1.indexOf(arr2[i]) remove one item
 		}
 	}
 	element.className = arr1.join(" ");
@@ -177,10 +176,7 @@ function dateConvert(dateobj, format) {
     var date = ("0" + dateobj.getDate()).slice(-2);
     var hours = ("0" + dateobj.getHours()).slice(-2);
     var minutes = ("0" + dateobj.getMinutes()).slice(-2);
-    var seconds = ("0" + dateobj.getSeconds()).slice(-2);
-    var day = dateobj.getDay();
     var months = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
-    var dates = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
     var converted_date = "";
 
     switch (format) {

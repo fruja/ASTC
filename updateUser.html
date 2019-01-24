@@ -25,18 +25,13 @@
     <!-- Load an icon library to show a hamburger menu (bars) on small screens -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- User icon library -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU"
-        crossorigin="anonymous">
-
-    <!-- JS import -->
-    <script src="JS/navbar.js"></script>
-    <script src="JS/updateCustomer.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
 </head>
 
 <body>
     <!-- Menu -->
     <div class="topnav" id="myTopnav">
-        <a href="index.html"><img src="./img/astc_logo_white.png" alt="ASTS_logo" style="height:17px;border:0;"></a>
+        <a href="index.html"><img src="./img/astc_logo_white.png" alt="ASTS_logo" class="logoImage"></a>
         <a href="index.html">Home</a>
         <a href="map.html">Map</a>
         <a href="shops.html">Shops</a>
@@ -71,6 +66,9 @@
 
         <button class="signUpLoginBtn" type="submit" onclick="return updateUser()">Update</button>
     </div>
+
+    <script src="JS/navbar.js"></script>
+    <script src="JS/updateCustomer.js"></script>
 
     <script>
         //Go back to the previous page

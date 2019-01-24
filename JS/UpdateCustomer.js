@@ -75,6 +75,7 @@ function updateUser() {
             text.innerHTML = "Successfully updated";
         }
 
+        //Converts the JavaScript value to JSON
         var json = JSON.stringify(data);
 
         //PUT request to update user

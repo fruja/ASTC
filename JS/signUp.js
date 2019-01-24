@@ -8,7 +8,7 @@ function Register() {
         Credit: 500
     }
 
-    //Convert the email and password to JSON
+    //Convert the customer value to JSON
     var json = JSON.stringify(customer);
 
     //Validation

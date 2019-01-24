@@ -50,25 +50,23 @@ sendReq("http://localhost:55825/Api/Offers", function processResponse(response) 
         var offerTitle = document.createElement('h3');
         offerTitle.textContent = offers.OfferTitle;
 
-        //makes a new p' tag for the expiration of the offer
+        //makes a new 'p' tag for the expiration of the offer
         var validUntil = document.createElement('p');
         validUntil.textContent = "Valid until: " + dateConvert(new Date(offers.OfferEnd), "DD-MMM-YYYY HH:MM");
+        
+        //read more button
+        var readMore = document.createElement('button');
+        readMore.textContent = "Read more ";
+        readMore.setAttribute('class', 'readMoreButton');
 
-        //adds the 'a' tag to the 'offerList' div
-        offerList.appendChild(card);
-
-            //read more button
-    var readMore = document.createElement('button');
-    readMore.textContent = "Read more ";
-    readMore.setAttribute('class', 'readMoreButton');
-
+        offerLogoContainer.appendChild(offerLogo); //adds the logo to the logo container
         //adds the information about the offer in to the 'a' tag
         card.appendChild(offerLogoContainer);
-        offerLogoContainer.appendChild(offerLogo);
         card.appendChild(image);
         card.appendChild(offerTitle);
         card.appendChild(validUntil);
         card.appendChild(readMore);
+        offerList.appendChild(card); //adds the cards to the list of offers
     });
 });
 
@@ -102,14 +100,11 @@ sendReq(`http://localhost:55825/Api/Offers/${CurrentID}`, function processRespon
     var shopName = document.createElement('p');
     shopName.textContent = "Shop: " + data.Shop.ShopName;
 
-
-
     singleOfferImg.appendChild(image);
     singleOffer.appendChild(offerTitle);
     singleOffer.appendChild(offerDescription);
     singleOffer.appendChild(offerEnds);
     singleOffer.appendChild(shopName);
-
 });
 
 //Formats the SQL DATETIME to a much more readable format
@@ -119,10 +114,7 @@ function dateConvert(dateobj, format) {
     var date = ("0" + dateobj.getDate()).slice(-2);
     var hours = ("0" + dateobj.getHours()).slice(-2);
     var minutes = ("0" + dateobj.getMinutes()).slice(-2);
-    var seconds = ("0" + dateobj.getSeconds()).slice(-2);
-    var day = dateobj.getDay();
     var months = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
-    var dates = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
     var converted_date = "";
 
     switch (format) {

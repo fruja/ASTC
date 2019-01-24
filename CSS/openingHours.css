@@ -42,18 +42,12 @@
   
   .time {
     display: inline-block;
-    float: right
+    float: right;
   }
   
   .today {
     color: #8b188b;
     font-weight: 600;
-  }
-  
-  @media all and (max-height: 420px) {
-    #timeDiv, .viewOpen {
-      top: 60%;
-    }
   }
   
   /* view hours modal */
@@ -123,6 +117,7 @@
     top: 10%;
   }
   
+  /* Makes the modal close when you click on the overlay (outside the modal) */
   .modal-overlay-close {
     height: 100%;
     width: 100%;

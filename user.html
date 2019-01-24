@@ -26,18 +26,13 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     
     <!-- User icon library -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU"
-        crossorigin="anonymous">
-
-    <!-- JS import -->
-    <script src="JS/navbar.js"></script>
-    <script src="JS/reqUsers.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
 </head>
 
 <body>
     <!-- Menu -->
     <div class="topnav" id="myTopnav">
-        <a href="index.html"><img src="./img/astc_logo_white.png" alt="ASTS_logo" style="height:17px;border:0;"></a>
+        <a href="index.html"><img src="./img/astc_logo_white.png" alt="ASTS_logo" class="logoImage"></a>
         <a href="index.html">Home</a>
         <a href="map.html">Map</a>
         <a href="shops.html" class="active">Shops</a>
@@ -68,6 +63,9 @@
         <h2>Vouchers</h2>
         <section id="singleUserVouchers" class="listContainer"></section>
     </div>
+
+    <script src="JS/navbar.js"></script>
+    <script src="JS/reqUsers.js"></script>
 
     <script>
         if('serviceWorker' in navigator) {
